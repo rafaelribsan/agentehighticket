@@ -708,12 +708,20 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
     <div class="cliente-head"><div class="cliente-num">CLIENTE 01</div></div>
     <div class="grid-2">
       <div class="field">
-        <label>Perfil (nome fictício ou descrição)</label>
-        <div class="input-wrap"><input type="text" id="c2_1_perfil" placeholder="Ex: Casal 40 anos, empresário + dentista, 2 filhos" maxlength="160"></div>
+        <label>Nome</label>
+        <div class="input-wrap"><input type="text" id="c2_1_nome" placeholder="Ex: Família Rodrigues" maxlength="160"></div>
       </div>
       <div class="field">
-        <label>Destino e ticket</label>
-        <div class="input-wrap"><input type="text" id="c2_1_destino" placeholder="Ex: Orlando 10 dias, R$ 78.000 de pacote" maxlength="180"></div>
+        <label>Destino / roteiro</label>
+        <div class="input-wrap"><input type="text" id="c2_1_destino" placeholder="Ex: Orlando, 10 dias" maxlength="160"></div>
+      </div>
+      <div class="field">
+        <label>Ticket</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_1_ticket" placeholder="0,00" class="money"></div>
+      </div>
+      <div class="field">
+        <label>Comissão</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_1_comissao" placeholder="0,00" class="money"></div>
       </div>
     </div>
     <div class="field">
@@ -726,12 +734,20 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
     <div class="cliente-head"><div class="cliente-num">CLIENTE 02</div></div>
     <div class="grid-2">
       <div class="field">
-        <label>Perfil</label>
-        <div class="input-wrap"><input type="text" id="c2_2_perfil" placeholder="Ex: Casal lua de mel, 33 anos, advogado + arquiteta" maxlength="160"></div>
+        <label>Nome</label>
+        <div class="input-wrap"><input type="text" id="c2_2_nome" placeholder="Ex: Casal Silveira (lua de mel)" maxlength="160"></div>
       </div>
       <div class="field">
-        <label>Destino e ticket</label>
-        <div class="input-wrap"><input type="text" id="c2_2_destino" placeholder="Ex: Maldivas + Dubai, R$ 65.000" maxlength="180"></div>
+        <label>Destino / roteiro</label>
+        <div class="input-wrap"><input type="text" id="c2_2_destino" placeholder="Ex: Maldivas + Dubai, 10 noites" maxlength="160"></div>
+      </div>
+      <div class="field">
+        <label>Ticket</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_2_ticket" placeholder="0,00" class="money"></div>
+      </div>
+      <div class="field">
+        <label>Comissão</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_2_comissao" placeholder="0,00" class="money"></div>
       </div>
     </div>
     <div class="field">
@@ -744,12 +760,20 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
     <div class="cliente-head"><div class="cliente-num">CLIENTE 03</div></div>
     <div class="grid-2">
       <div class="field">
-        <label>Perfil</label>
-        <div class="input-wrap"><input type="text" id="c2_3_perfil" placeholder="Ex: Casal aposentado 63 anos, com filha adulta" maxlength="160"></div>
+        <label>Nome</label>
+        <div class="input-wrap"><input type="text" id="c2_3_nome" placeholder="Ex: Família Mendes (aposentados + filha)" maxlength="160"></div>
       </div>
       <div class="field">
-        <label>Destino e ticket</label>
-        <div class="input-wrap"><input type="text" id="c2_3_destino" placeholder="Ex: França + Itália 18 dias, R$ 95.000" maxlength="180"></div>
+        <label>Destino / roteiro</label>
+        <div class="input-wrap"><input type="text" id="c2_3_destino" placeholder="Ex: França + Itália, 18 dias" maxlength="160"></div>
+      </div>
+      <div class="field">
+        <label>Ticket</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_3_ticket" placeholder="0,00" class="money"></div>
+      </div>
+      <div class="field">
+        <label>Comissão</label>
+        <div class="input-wrap"><span class="prefix">R$</span><input type="text" id="c2_3_comissao" placeholder="0,00" class="money"></div>
       </div>
     </div>
     <div class="field">
@@ -896,14 +920,20 @@ const REQUIRED_FIELDS = [
   { id: 'c1_modelo', label: 'Modelo de trabalho', minLen: 5 },
   { id: 'c1_rotina', label: 'Sua rotina (mín. 100 caracteres)', minLen: 100 },
   // Camada 2
-  { id: 'c2_1_perfil', label: 'Cliente 1 · perfil', minLen: 2 },
-  { id: 'c2_1_destino', label: 'Cliente 1 · destino e ticket', minLen: 2 },
+  { id: 'c2_1_nome', label: 'Cliente 1 · nome', minLen: 2 },
+  { id: 'c2_1_destino', label: 'Cliente 1 · destino', minLen: 2 },
+  { id: 'c2_1_ticket', label: 'Cliente 1 · ticket', minLen: 1 },
+  { id: 'c2_1_comissao', label: 'Cliente 1 · comissão', minLen: 1 },
   { id: 'c2_1_porque', label: 'Cliente 1 · por que foi excelente', minLen: 10 },
-  { id: 'c2_2_perfil', label: 'Cliente 2 · perfil', minLen: 2 },
-  { id: 'c2_2_destino', label: 'Cliente 2 · destino e ticket', minLen: 2 },
+  { id: 'c2_2_nome', label: 'Cliente 2 · nome', minLen: 2 },
+  { id: 'c2_2_destino', label: 'Cliente 2 · destino', minLen: 2 },
+  { id: 'c2_2_ticket', label: 'Cliente 2 · ticket', minLen: 1 },
+  { id: 'c2_2_comissao', label: 'Cliente 2 · comissão', minLen: 1 },
   { id: 'c2_2_porque', label: 'Cliente 2 · por que foi excelente', minLen: 10 },
-  { id: 'c2_3_perfil', label: 'Cliente 3 · perfil', minLen: 2 },
-  { id: 'c2_3_destino', label: 'Cliente 3 · destino e ticket', minLen: 2 },
+  { id: 'c2_3_nome', label: 'Cliente 3 · nome', minLen: 2 },
+  { id: 'c2_3_destino', label: 'Cliente 3 · destino', minLen: 2 },
+  { id: 'c2_3_ticket', label: 'Cliente 3 · ticket', minLen: 1 },
+  { id: 'c2_3_comissao', label: 'Cliente 3 · comissão', minLen: 1 },
   { id: 'c2_3_porque', label: 'Cliente 3 · por que foi excelente', minLen: 10 },
   // Camada 3
   { id: 'c3_demanda', label: 'Top 3 destinos de maior demanda', minLen: 5 },
@@ -925,6 +955,15 @@ function validar() {
   return REQUIRED_FIELDS.filter(f => val(f.id).length < f.minLen);
 }
 
+
+function maskMoney(el) {
+  let v = el.value.replace(/\D/g, '');
+  if (!v) { el.value = ''; return; }
+  v = (parseInt(v, 10) / 100).toFixed(2);
+  v = v.replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  el.value = v;
+}
+
 // ========== CHAR COUNTERS ==========
 function updateCounter(id) {
   const el = document.getElementById(id);
@@ -943,8 +982,10 @@ function atualizarClienteCards() {
   for (let i = 1; i <= 3; i++) {
     const card = document.querySelector('#s-c2 .cliente-card:nth-of-type(' + i + ')');
     if (!card) continue;
-    const ok = val('c2_' + i + '_perfil').length >= 2
+    const ok = val('c2_' + i + '_nome').length >= 2
       && val('c2_' + i + '_destino').length >= 2
+      && val('c2_' + i + '_ticket').length >= 1
+      && val('c2_' + i + '_comissao').length >= 1
       && val('c2_' + i + '_porque').length >= 10;
     if (ok) card.classList.add('complete');
     else card.classList.remove('complete');
@@ -974,6 +1015,7 @@ function atualizarBotao() {
 // ========== WIRING ==========
 document.addEventListener('input', (e) => {
   if (e.target.matches('input, textarea')) {
+    if (e.target.classList && e.target.classList.contains('money')) maskMoney(e.target);
     if (e.target.id === 'c1_rotina') updateCounter('c1_rotina');
     if (e.target.id === 'c5_horror') updateCounter('c5_horror');
     atualizarClienteCards();
@@ -1039,11 +1081,11 @@ Rotina detalhada: ${val('c1_rotina')}
 
 CAMADA 2 — OS 3 MELHORES CLIENTES QUE JÁ TIVE:
 
-Cliente 1: ${val('c2_1_perfil')}. ${val('c2_1_destino')}. Foram excelentes clientes porque: ${val('c2_1_porque')}
+Cliente 1: ${val('c2_1_nome')}. Destino/roteiro: ${val('c2_1_destino')}. Ticket: R$ ${val('c2_1_ticket')}. Comissão: R$ ${val('c2_1_comissao')}. Foram excelentes clientes porque: ${val('c2_1_porque')}
 
-Cliente 2: ${val('c2_2_perfil')}. ${val('c2_2_destino')}. Foram excelentes porque: ${val('c2_2_porque')}
+Cliente 2: ${val('c2_2_nome')}. Destino/roteiro: ${val('c2_2_destino')}. Ticket: R$ ${val('c2_2_ticket')}. Comissão: R$ ${val('c2_2_comissao')}. Foram excelentes porque: ${val('c2_2_porque')}
 
-Cliente 3: ${val('c2_3_perfil')}. ${val('c2_3_destino')}. Foram excelentes porque: ${val('c2_3_porque')}
+Cliente 3: ${val('c2_3_nome')}. Destino/roteiro: ${val('c2_3_destino')}. Ticket: R$ ${val('c2_3_ticket')}. Comissão: R$ ${val('c2_3_comissao')}. Foram excelentes porque: ${val('c2_3_porque')}
 
 CAMADA 3 — O QUE EU MAIS VENDO E O QUE MAIS DÁ LUCRO:
 Os 3 destinos de maior DEMANDA (mais entram em contato): ${val('c3_demanda')}
