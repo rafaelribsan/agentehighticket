@@ -984,28 +984,30 @@ function render() {
   document.getElementById('valVendasMeta').textContent =
     `${state.txVenda}% das reuniões viram venda`;
 
-  // ROI
-  const receita = vendas * state.comissao;
-  const custoVenda = vendas > 0 ? investTotal / vendas : 0;
+  // ROI — usa o número de vendas exibido (arredondado), pra bater com o painel
+  const vendasExibidas = Math.round(vendas);
+  const receita = vendasExibidas * state.comissao;
+  const custoVenda = vendasExibidas > 0 ? investTotal / vendasExibidas : 0;
   const roi = investTotal > 0 ? receita / investTotal : 0;
+  const roiFmt = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(roi);
 
-  document.getElementById('valCustoVenda').textContent = vendas > 0 ? fmtMoney0(custoVenda) : '—';
+  document.getElementById('valCustoVenda').textContent = vendasExibidas > 0 ? fmtMoney0(custoVenda) : '—';
   document.getElementById('valReceita').textContent = fmtMoney0(receita);
-  document.getElementById('valRoi').textContent = vendas > 0 ? fmtBR0(roi) + 'x' : '—';
+  document.getElementById('valRoi').textContent = vendasExibidas > 0 ? roiFmt + 'x' : '—';
 
   // Conclusão e cor do card
   const roiCard = document.getElementById('roiCard');
   const conclusao = document.getElementById('roiConclusao');
 
-  if (vendas < 1) {
+  if (vendasExibidas < 1) {
     roiCard.classList.add('roi-danger');
     conclusao.innerHTML = `Com esse investimento e essa eficiência, você <strong>não fecha nem 1 venda</strong> no período. Aumente o investimento, melhore as taxas — ou as duas coisas.`;
   } else if (roi < 2) {
     roiCard.classList.add('roi-danger');
-    conclusao.innerHTML = `ROI de <strong>${fmtBR0(roi)}x</strong> é operação no limite. Anúncio só faz sentido quando a comissão compensa o CAC com folga. Revise taxas ou aumente ticket.`;
+    conclusao.innerHTML = `ROI de <strong>${roiFmt}x</strong> é operação no limite. Anúncio só faz sentido quando a comissão compensa o CAC com folga. Revise taxas ou aumente ticket.`;
   } else {
     roiCard.classList.remove('roi-danger');
-    conclusao.innerHTML = `Cada <strong>R$ 1</strong> investido em ads te devolve <strong>R$ ${fmtBR0(roi)}</strong> em comissão. Anúncio não é gasto — é <strong>compra de lucro</strong>.`;
+    conclusao.innerHTML = `Cada <strong>R$ 1</strong> investido em ads te devolve <strong>R$ ${roiFmt}</strong> em comissão. Anúncio não é gasto — é <strong>compra de lucro</strong>.`;
   }
 }
 
