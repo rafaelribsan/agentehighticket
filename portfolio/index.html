@@ -691,6 +691,8 @@ input[type="range"]::-moz-range-thumb {
 .verdict-label.estrela { color: #0a0a0a; background: var(--accent); }
 .verdict-label.ancora { color: var(--tipo-a); background: rgba(94,179,255,0.12); border: 1px solid rgba(94,179,255,0.3); }
 .verdict-label.mina { color: var(--tipo-d); background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); }
+.verdict-label.construcao { color: var(--warning); background: rgba(255,149,0,0.12); border: 1px solid rgba(255,149,0,0.3); }
+.verdict-label.oportunidade { color: var(--tipo-e); background: rgba(244,114,182,0.12); border: 1px solid rgba(244,114,182,0.3); }
 .verdict-label.cilada { color: var(--danger); background: rgba(255,59,48,0.1); border: 1px solid rgba(255,59,48,0.3); }
 .verdict-label.gaveta { color: var(--text-muted); background: transparent; border: 1px solid var(--border-strong); }
 .verdict-desc { font-size: 13px; color: var(--text-dim); line-height: 1.55; }
@@ -870,7 +872,7 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
       <span class="section-number">04 / 04</span>
       <h2>A matriz do seu portfólio</h2>
     </div>
-    <div class="section-hint">Demanda no eixo horizontal, margem no vertical, paixão no tamanho, tipo na cor. Onde cada produto cai decide a operação que você tem.</div>
+    <div class="section-hint">Demanda no eixo horizontal, afinidade do agente (P+C) no vertical, margem no tamanho da bolha, tipo na cor. Onde cada produto cai decide a operação que você tem.</div>
   </div>
 
   <div class="matrix-wrap">
@@ -886,7 +888,7 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
         </div>
       </div>
       <div class="legend-group">
-        <div class="legend-title">Bolha = paixão</div>
+        <div class="legend-title">Bolha = margem</div>
         <div class="legend-items legend-sizes">
           <div class="legend-item"><span class="dot size-sm"></span>Baixa</div>
           <div class="legend-item"><span class="dot size-md"></span>Média</div>
@@ -1128,6 +1130,12 @@ function addProduto() {
 }
 
 // ========== MATRIZ (SVG) ==========
+// Eixos:
+//   X = Demanda (0–10)
+//   Y = Afinidade do agente = (P + C) / 2 (0–10)
+//   Tamanho da bolha = Margem por venda (R$)
+//   Cor da bolha = Tipo (A–E)
+// O label de R$ aparece abaixo da bolha pra preservar a leitura monetária.
 function renderMatriz() {
   const validos = state.produtos.filter(p => p.nome && p.tipo && p.margem > 0);
   const svg = document.getElementById('matrixSvg');
@@ -1147,12 +1155,13 @@ function renderMatriz() {
   const chartW = W - PAD_L - PAD_R;
   const chartH = H - PAD_T - PAD_B;
 
+  // Tamanho da bolha proporcional à margem (R$). Escala relativa ao maior do portfólio.
   const maxMargem = Math.max(...validos.map(p => p.margem), 1);
-  const margemTeto = roundUpNice(maxMargem);
 
   const xFor = (d) => PAD_L + (d / 10) * chartW;
-  const yFor = (m) => PAD_T + chartH - (m / margemTeto) * chartH;
-  const rFor = (p) => 10 + (p / 10) * 22;
+  const yFor = (afinidade) => PAD_T + chartH - (afinidade / 10) * chartH;
+  const rFor = (margem) => 12 + (margem / maxMargem) * 22;
+  const afinidadeOf = (p) => (p.p + p.c) / 2;
 
   let els = '';
 
@@ -1193,62 +1202,105 @@ function renderMatriz() {
     els += `<text x="${x}" y="${PAD_T+chartH+18}" text-anchor="middle" style="${axisStyle}">${d}</text>`;
   });
 
-  [0, margemTeto/2, margemTeto].forEach(m => {
-    const y = yFor(m);
+  [0, 5, 10].forEach(a => {
+    const y = yFor(a);
     els += `<line x1="${PAD_L-4}" y1="${y}" x2="${PAD_L}" y2="${y}" stroke="#333"/>`;
-    els += `<text x="${PAD_L-10}" y="${y+3}" text-anchor="end" style="${axisStyle}">R$ ${fmtBR0(m)}</text>`;
+    els += `<text x="${PAD_L-10}" y="${y+3}" text-anchor="end" style="${axisStyle}">${a}</text>`;
   });
 
   const axisTitleStyle = "font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:700;fill:#a3a3a3;letter-spacing:0.1em;text-transform:uppercase;";
   els += `<text x="${PAD_L + chartW/2}" y="${H - 20}" text-anchor="middle" style="${axisTitleStyle}">Demanda →</text>`;
-  els += `<text x="24" y="${PAD_T + chartH/2}" text-anchor="middle" transform="rotate(-90, 24, ${PAD_T+chartH/2})" style="${axisTitleStyle}">Margem por venda →</text>`;
+  els += `<text x="24" y="${PAD_T + chartH/2}" text-anchor="middle" transform="rotate(-90, 24, ${PAD_T+chartH/2})" style="${axisTitleStyle}">Afinidade do agente (P+C) →</text>`;
 
   validos.forEach(p => {
     const cx = xFor(p.d);
-    const cy = yFor(p.margem);
-    const r = rFor(p.p);
+    const cy = yFor(afinidadeOf(p));
+    const r = rFor(p.margem);
     const cor = TIPOS[p.tipo].corHex;
     els += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${cor}" opacity="0.25"/>`;
     els += `<circle cx="${cx}" cy="${cy}" r="${r*0.7}" fill="${cor}" opacity="0.9" stroke="${cor}" stroke-width="1.5"/>`;
     els += `<text x="${cx}" y="${cy+3}" text-anchor="middle" style="font-family:'Bricolage Grotesque',sans-serif;font-size:10px;font-weight:800;fill:#0a0a0a;">${p.tipo}</text>`;
     const nome = p.nome.length > 18 ? p.nome.slice(0, 17) + '…' : p.nome;
     els += `<text x="${cx}" y="${cy - r - 6}" text-anchor="middle" style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;fill:#f5f5f5;">${escapeHTML(nome)}</text>`;
+    els += `<text x="${cx}" y="${cy + r + 14}" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;fill:#a3a3a3;letter-spacing:0.02em;">R$ ${fmtBR0(p.margem)}</text>`;
   });
 
   svg.innerHTML = els;
   renderVereditos(validos);
 }
 
-function roundUpNice(n) {
-  if (n <= 0) return 100;
-  const exp = Math.floor(Math.log10(n));
-  const base = Math.pow(10, exp);
-  const mant = n / base;
-  let nice;
-  if (mant <= 1) nice = 1;
-  else if (mant <= 2) nice = 2;
-  else if (mant <= 5) nice = 5;
-  else nice = 10;
-  return nice * base;
-}
-
 // ========== VEREDITOS ==========
+// Regra de classificação baseada nos 4 critérios: Demanda (D), Paixão (P),
+// Conhecimento (C) e Margem por venda (M, em R$).
+// Faixas: alta = ≥7, média = 4–6, baixa = <4 (para D/P/C, escala 0–10).
+// Margem é avaliada como "alta" se >= mediana das margens do portfólio
+// (caso só haja 1 produto, considera-se sempre alta).
 function classificar(p) {
-  const alta_d = p.d >= 7, baixa_d = p.d < 4;
-  const alta_p = p.p >= 7, baixa_p = p.p < 4;
-  const media_c = p.c >= 4, baixa_c = p.c < 4;
+  const alta_d = p.d >= 7, media_d = p.d >= 4 && p.d < 7, baixa_d = p.d < 4;
+  const alta_p = p.p >= 7, media_p = p.p >= 4 && p.p < 7, baixa_p = p.p < 4;
+  const alta_c = p.c >= 7, media_c = p.c >= 4 && p.c < 7, baixa_c = p.c < 4;
 
-  const margens = state.produtos.filter(x => x.margem > 0).map(x => x.margem).sort((a,b)=>a-b);
-  const mediana = margens.length > 0 ? margens[Math.floor(margens.length/2)] : 0;
-  const alta_m = p.margem >= mediana;
+  // Mediana da margem (correta para qualquer tamanho de lista)
+  const margens = state.produtos.filter(x => x.margem > 0).map(x => x.margem);
+  let alta_m;
+  if (margens.length <= 1) {
+    alta_m = margens.length === 1; // produto único = sempre alta margem (não há base de comparação)
+  } else {
+    const sorted = [...margens].sort((a, b) => a - b);
+    const n = sorted.length;
+    const mediana = n % 2 === 0
+      ? (sorted[n/2 - 1] + sorted[n/2]) / 2
+      : sorted[Math.floor(n/2)];
+    alta_m = p.margem >= mediana;
+  }
 
-  if (baixa_d && baixa_p) {
+  // 1. CILADA — commodity sem demanda E sem paixão. Pior dos mundos. Saída imediata.
+  if (p.tipo === 'A' && baixa_d && baixa_p) {
     return {
       label: 'CILADA',
       classe: 'cilada',
-      texto: `Baixa demanda e baixa paixão. Você está gastando energia num produto que o mercado não quer e que você não gosta de vender. <strong>Considere parar de oferecer</strong> e realocar esse tempo em produtos com D e P maiores.`
+      texto: `Commodity sem demanda e sem paixão pra vender. Você está gastando energia num produto que o mercado não quer e que você não gosta de oferecer. <strong>Para de oferecer hoje</strong> e realoca esse tempo em produtos com D e P maiores.`
     };
   }
+
+  // 2. Demanda baixa — comportamento depende do tipo do produto.
+  if (baixa_d) {
+    // 2a. Commodity (tipo A) sem demanda = morta de verdade. Gaveta.
+    if (p.tipo === 'A') {
+      return {
+        label: 'GAVETA',
+        classe: 'gaveta',
+        texto: `Commodity sem demanda é commodity morta. Sem diferenciação e sem mercado pedindo, não há razão pra manter no portfólio. <strong>Tira da prateleira</strong> e foca a operação em produtos com margem real.`
+      };
+    }
+    // 2b. Sob medida / consultoria / grupos / prateleira com paixão e margem altas: nicho premium.
+    if (alta_p && alta_m) {
+      return {
+        label: 'NICHO',
+        classe: 'mina',
+        texto: `Margem alta, paixão alta, demanda ainda silenciosa. Produto de nicho com potencial premium. <strong>Pode virar estrela se você gerar demanda</strong> — candidato natural ao Copy-Mestre e ao FMV da sua agência.`
+      };
+    }
+    // 2c. Demais tipos com baixa demanda: oportunidade latente. Não é gaveta — é mercado dormindo.
+    return {
+      label: 'OPORTUNIDADE',
+      classe: 'oportunidade',
+      texto: `Baixa demanda hoje, mas o tipo do produto (${TIPOS[p.tipo].nome}) permite criar mercado. <strong>O Agente High Ticket não espera o lead bater na porta</strong> — provoca demanda com FMV intencional, copy de educação e posicionamento. Avalie se vale o investimento de marketing pra ativar esse nicho.`
+    };
+  }
+
+  // Daqui pra baixo: alta_d ou media_d.
+
+  // 3. ÂNCORA — alta demanda + baixa paixão = commodity. Paga boleto, não diferencia.
+  if (alta_d && baixa_p) {
+    return {
+      label: 'ÂNCORA',
+      classe: 'ancora',
+      texto: `Alta demanda, baixa paixão. É um produto de operação — paga os boletos, mantém o volume, mas você não tem tesão em vender. <strong>Mantenha, mas não ancore sua marca nele.</strong> O High Ticket acontece em outro quadrante.`
+    };
+  }
+
+  // 4. MINA DE OURO — alta D + alta P + baixo conhecimento. Prioridade de capacitação.
   if (alta_d && alta_p && baixa_c) {
     return {
       label: 'MINA DE OURO',
@@ -1256,34 +1308,47 @@ function classificar(p) {
       texto: `Alta demanda, alta paixão, baixo conhecimento. Você tem uma mina de ouro nas mãos — mas ainda não domina o produto. <strong>Estude esse destino imediatamente</strong>. Essa é sua prioridade de capacitação da próxima semana.`
     };
   }
-  if (alta_d && alta_p && alta_m && media_c) {
+
+  // 5. ESTRELA — alta D + alta P + (alta margem OU alto conhecimento). Produto-chefe.
+  if (alta_d && alta_p && (alta_m || alta_c)) {
+    const reforco = alta_m && alta_c
+      ? 'alta margem e domínio técnico'
+      : (alta_m ? 'alta margem' : 'domínio técnico consolidado');
     return {
       label: 'ESTRELA',
       classe: 'estrela',
-      texto: `Alta demanda, alta paixão, alta margem. Este é o seu <strong>produto High Ticket</strong>. Foque o marketing aqui — criativos, posts, copy-mestre, tudo deve girar em torno deste produto. É ele que puxa a agência pra cima.`
+      texto: `Alta demanda, alta paixão, ${reforco}. Este é o seu <strong>produto High Ticket</strong>. Foque o marketing aqui — criativos, posts, copy-mestre, tudo deve girar em torno deste produto. É ele que puxa a agência pra cima.`
     };
   }
-  if (alta_d && !alta_m) {
+
+  // 6. EM CONSTRUÇÃO — alta D + alta P, mas margem e conhecimento ainda fracos.
+  if (alta_d && alta_p) {
     return {
-      label: 'ÂNCORA',
-      classe: 'ancora',
-      texto: `Alta demanda, margem modesta. É um produto de operação — paga os boletos, mantém o volume. <strong>Mantenha, mas não ancore sua marca nele.</strong> O High Ticket acontece em outro quadrante.`
+      label: 'EM CONSTRUÇÃO',
+      classe: 'construcao',
+      texto: `Alta demanda, alta paixão, mas margem e conhecimento ainda em construção. <strong>Tem cara de estrela, mas precisa subir o ticket E aprofundar o domínio</strong> antes de virar o produto-chefe da operação.`
     };
   }
-  if (baixa_d) {
-    return {
-      label: 'GAVETA',
-      classe: 'gaveta',
-      texto: `Demanda baixa. Mesmo com paixão e conhecimento, o mercado não está pedindo isso agora. Deixa na gaveta. <strong>Reative apenas se o cenário mudar</strong> ou se você quiser provocar demanda deliberadamente (o que é outro jogo).`
-    };
-  }
-  if (alta_m && alta_p) {
+
+  // 7. NICHO — demanda média + paixão alta + margem alta.
+  if (alta_p && alta_m) {
     return {
       label: 'NICHO',
       classe: 'mina',
-      texto: `Margem alta, paixão alta, demanda moderada. Produto de nicho com potencial. <strong>Pode virar estrela se você gerar demanda</strong> — é um candidato natural ao Copy-Mestre e FMV da sua agência.`
+      texto: `Margem alta, paixão alta, demanda moderada. Produto de nicho com potencial. <strong>Pode virar estrela se você gerar demanda</strong> — candidato natural ao Copy-Mestre e ao FMV da sua agência.`
     };
   }
+
+  // 8. ÂNCORA leve — demanda média + baixa paixão + margem fraca.
+  if (baixa_p && !alta_m) {
+    return {
+      label: 'ÂNCORA',
+      classe: 'ancora',
+      texto: `Demanda razoável, baixa paixão, margem fraca. Produto de manutenção. <strong>Mantenha apenas enquanto serve à operação</strong> — não é candidato a virar estrela.`
+    };
+  }
+
+  // 9. OBSERVAR — meio termo. Revisita em 30 dias com dados reais.
   return {
     label: 'OBSERVAR',
     classe: 'ancora',
