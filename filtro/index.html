@@ -769,13 +769,23 @@ section:nth-of-type(3) { animation-delay: 0.35s; }
 
 <script>
 // ========== PROMPT MESTRE (fixo) ==========
-const PROMPT_MESTRE = `PROMPT FILTRO DE QUALIFICAÇÃO AUTOMÁTICO
+const PROMPT_MESTRE = `Considere que a PROMESSA da minha agência é esta:
+
+[COLAR PROMESSA AQUI]
+
+PROMPT FILTRO DE QUALIFICAÇÃO AUTOMÁTICO
 
 1) Perguntas do Formulário
 
-Com base nas informações deste projeto, construa 3 perguntas-chave que farão parte de um formulário de qualificação. As perguntas devem revelar informações importantes sobre o cliente ideal deste projeto a fim de que o mentor entre em reunião apenas com clientes realmente qualificados.
+Com base nesta nossa conversa, construa 3 perguntas-chave que farão parte de um formulário de qualificação.
 
-Por isso, as perguntas devem revelar o nível de conhecimento do cliente acerca do que está proposto na promessa (headline). Para cada pergunta, ofereça 3 respostas diferentes para a pessoa marcar a melhor opção para ela. Para cada resposta, comece com A), B) e assim por diante.
+As perguntas devem revelar informações importantes sobre o cliente ideal deste projeto a fim de que a minha agenda só seja disponibilizada para clientes realmente qualificados.
+
+Para tanto, considere que cliente qualificado é aquele que tem PROBLEMA (Dor real, não curiosidade. Tem data, motivo, pessoa, prazo), URGÊNCIA (Não tem 8 meses pra decidir. Lead vira reunião na mesma semana) e DINHEIRO (cartão de crédito disponível).
+
+Por isso, as perguntas devem revelar essas questões.
+
+Para cada pergunta, ofereça 3 respostas diferentes para a pessoa marcar a melhor opção para ela. Comece as respostas com A), B) e C).
 
 Exemplo:
 
@@ -789,12 +799,13 @@ C) Quero otimização. Busco o melhor retorno em experiência e conforto pelo me
 Faça o detalhamento de quem eu não posso ajudar e quem eu posso ajudar, conforme modelo abaixo (com 3 opções negativas e 2 positivas):
 
 Nós NÃO conseguimos ajudar você caso:
-❌ Você busca "jeitinhos" ou "dicas de mochileiro" para economizar a qualquer custo;
-❌ Você procura roteiros genéricos de internet "copia e cola".
+❌ Você queira fazer uma viagem nacional
+❌ Você busque por "jeitinhos" ou "dicas de mochileiro" para economizar a qualquer custo;
+❌ Você procure roteiros genéricos de internet "copia e cola".
 
 Quem nós ajudamos:
-✅ Você valoriza o seu tempo e busca conforto;
-✅ Você quer a segurança de ter especialistas locais cuidando da sua experiência.`;
+✅ Quem busca pelos destinos mais exclusivos da Europa
+✅ Quem valoriza segurança, tempo e conforto na viagem`;
 
 // ========== HELPERS ==========
 function escapeHTML(str) {
