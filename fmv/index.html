@@ -328,6 +328,45 @@ input[type="number"]::placeholder {
 
 .choque-alerta-text strong { color: var(--danger); font-weight: 700; }
 
+/* Modificadores de faixa do Choque de Realidade */
+.choque-alerta.ok {
+  background: linear-gradient(135deg, rgba(153,255,0,0.07), rgba(153,255,0,0.02));
+  border-color: rgba(153,255,0,0.3);
+  border-left-color: var(--accent);
+}
+.choque-alerta.ok .choque-alerta-label { color: var(--accent); }
+.choque-alerta.ok .choque-alerta-text strong { color: var(--accent); }
+
+.choque-alerta.healthy {
+  background: linear-gradient(135deg, rgba(153,255,0,0.06), rgba(153,255,0,0.02));
+  border-color: rgba(153,255,0,0.28);
+  border-left-color: var(--accent);
+}
+.choque-alerta.healthy .choque-alerta-label { color: var(--accent); }
+.choque-alerta.healthy .choque-alerta-text strong { color: var(--accent); }
+
+.choque-alerta.acceptable {
+  background: linear-gradient(135deg, rgba(217,234,73,0.06), rgba(217,234,73,0.02));
+  border-color: rgba(217,234,73,0.3);
+  border-left-color: #d9ea49;
+}
+.choque-alerta.acceptable .choque-alerta-label { color: #d9ea49; }
+.choque-alerta.acceptable .choque-alerta-text strong { color: #d9ea49; }
+
+.choque-alerta.warn {
+  background: linear-gradient(135deg, rgba(255,149,0,0.07), rgba(255,149,0,0.02));
+  border-color: rgba(255,149,0,0.3);
+  border-left-color: var(--warning);
+}
+.choque-alerta.warn .choque-alerta-label { color: var(--warning); }
+.choque-alerta.warn .choque-alerta-text strong { color: var(--warning); }
+
+.choque-alerta.critical {
+  background: linear-gradient(135deg, rgba(255,59,48,0.12), rgba(255,59,48,0.04));
+  border-color: rgba(255,59,48,0.5);
+  border-left-width: 4px;
+}
+
 /* TABULEIRO */
 .formato-legenda {
   display: flex;
@@ -844,6 +883,216 @@ input[type="number"]::placeholder {
 }
 
 
+/* ENTREGA / MAPA DE GRAVACAO */
+.entrega-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 40px 44px;
+}
+@media (max-width: 600px) {
+  .entrega-wrap { padding: 28px 22px; }
+}
+
+.entrega-head { margin-bottom: 28px; }
+
+.entrega-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.entrega-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.entrega-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-dim);
+  max-width: 720px;
+}
+
+/* botao grande verde — padrao MONTAR PROMPT */
+.btn-gerar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 22px 28px;
+  margin-top: 8px;
+  background: var(--accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.btn-gerar:hover:not(:disabled) {
+  background: #b3ff33;
+  transform: translateY(-1px);
+}
+.btn-gerar:active:not(:disabled) { transform: translateY(0); }
+.btn-gerar:disabled {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  cursor: not-allowed;
+}
+.btn-gerar .btn-arrow { font-size: 20px; line-height: 1; }
+.btn-gerar:disabled .btn-arrow { opacity: 0.4; }
+
+/* lista de pendencias abaixo do botao */
+.pending-list {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.pending-list:empty { display: none; }
+.pending-title {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.pending-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.pending-list li {
+  padding: 4px 0 4px 18px;
+  position: relative;
+}
+.pending-list li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+/* OUTPUT — bloco do mapa pronto */
+.prompt-output {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  animation: alertaIn 0.4s ease-out;
+}
+
+.output-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.output-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.output-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.btn-action:hover {
+  border-color: var(--text-dim);
+  background: var(--surface-2);
+}
+.btn-action .ico {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.output-box {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 520px;
+  overflow-y: auto;
+}
+.output-box::-webkit-scrollbar { width: 8px; }
+.output-box::-webkit-scrollbar-track { background: transparent; }
+.output-box::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+/* tutorial pos-mapa */
+.tutorial {
+  margin-top: 28px;
+  padding: 22px 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.tutorial-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.tutorial-list {
+  margin: 0;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+.tutorial-list li { padding: 4px 0; }
+.tutorial-list li::marker { color: var(--accent); font-weight: 700; }
+.tutorial-list strong { color: var(--text); font-weight: 600; }
+
 /* entry animations */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
@@ -1201,7 +1450,7 @@ function avaliarGrade() {
     2: formatosPresentes === 4,
     3: maxFormato <= MAX_POR_FORMATO && totalPreenchidos > 0,
     4: totalPreenchidos === TOTAL_BLOCOS && desvio <= 3,
-    5: state.postsPanflet <= 12 || state.postsPanflet === 0
+    5: state.postsPanflet <= 9 || state.postsPanflet === 0
   };
 
   return { segs, cont, totalPreenchidos, formatosPresentes, maxFormato };
@@ -1237,7 +1486,7 @@ function renderTermometro() {
       fb.classList.add('warn');
       fb.innerHTML = `<strong>${FORMATOS[dominante[0]].nome}</strong> está dominando demais (${dominante[1]} blocos). Reduza pra no máximo ${MAX_POR_FORMATO} e redistribua.`;
     }
-  } else if (state.postsPanflet > 12) {
+  } else if (state.postsPanflet > 9) {
     fb.classList.add('warn');
     fb.innerHTML = `Sua grade está boa, mas o histórico revela que você vinha de <strong>${state.postsPanflet} posts de panfletagem</strong>. O FMV vai te resgatar — comece a publicar a partir dele.`;
   } else {
@@ -1264,7 +1513,7 @@ function atualizarBotaoGerar() {
   if (!a.segs[2]) pendentes.push('Usar pelo menos 1 bloco de cada um dos 4 formatos');
   if (!a.segs[3]) pendentes.push(`Nenhum formato pode passar de ${MAX_POR_FORMATO} blocos`);
   if (!a.segs[4] && a.segs[1]) pendentes.push('Reduzir o desvio entre formatos (3 ou menos)');
-  if (!a.segs[5]) pendentes.push('Reduzir o histórico de posts de panfletagem (max. 12 dos últimos 45)');
+  if (!a.segs[5]) pendentes.push('Reduzir o histórico de posts de panfletagem (max. 9 dos últimos 45 — 20%)');
 
   if (pendentes.length === 0) {
     btn.disabled = false;
@@ -1354,23 +1603,59 @@ function confirmarBloco() {
 function renderChoque() {
   const alerta = document.getElementById('choqueAlerta');
   const txt = document.getElementById('choqueAlertaText');
+  const label = alerta.querySelector('.choque-alerta-label');
   const n = state.postsPanflet;
 
+  // remover modificadores anteriores
+  alerta.classList.remove('ok', 'healthy', 'acceptable', 'warn', 'critical');
+
+  // sempre exibe — incluindo 0, com mensagem de excelencia
+  alerta.style.display = 'block';
+
   if (n <= 0) {
-    alerta.style.display = 'none';
+    alerta.classList.add('ok');
+    label.textContent = 'Excelente';
+    txt.innerHTML = `<strong>Zero panfletagem em 45 posts.</strong> Você está usando o feed como vitrine, não como prateleira. Mantenha esse padrão e use o tabuleiro abaixo pra estruturar os próximos 15.`;
     return;
   }
 
-  alerta.style.display = 'block';
-
   const pct = Math.round((n / 45) * 100);
-  if (n >= 25) {
-    txt.innerHTML = `Você não é um panfleteiro digital — você é o ativo da sua agência. <strong>${n} posts de pacote/preço em 45 (${pct}%)</strong> diluiu sua autoridade até a invisibilidade. Recomeçar agora é mais barato do que continuar.`;
-  } else if (n >= 13) {
-    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%) foram de pacote ou preço.</strong> Está acima do limite saudável. Cada post de panfletagem cancela mentalmente um post estratégico. O FMV abaixo é o seu reset.`;
-  } else {
-    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%)</strong> foram de pacote/preço. Está dentro de uma faixa aceitável, mas o ideal é zero. O FMV abaixo te tira da tentação.`;
+
+  // 1-4 posts (até 9%) — saudavel
+  if (n <= 4) {
+    alerta.classList.add('healthy');
+    label.textContent = 'Saudável';
+    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%)</strong> foram de pacote ou preço. Está numa faixa saudável — o feed continua sendo seu, não da sua prateleira de pacotes. Mantenha o conteúdo de autoridade no comando.`;
+    return;
   }
+
+  // 5-7 posts (10-17%) — aceitavel
+  if (n <= 7) {
+    alerta.classList.add('acceptable');
+    label.textContent = 'Aceitável';
+    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%)</strong> foram de pacote ou preço. Ainda dentro do aceitável, mas o conteúdo de autoridade precisa pesar mais que a oferta. Use o tabuleiro pra recalibrar.`;
+    return;
+  }
+
+  // 8-9 posts (18-20%) — no limite
+  if (n <= 9) {
+    alerta.classList.add('warn');
+    label.textContent = 'No limite';
+    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%)</strong> foram de pacote ou preço. Você está no limite. Use o tabuleiro abaixo pra levar mais de você pro feed antes que ele vire prateleira.`;
+    return;
+  }
+
+  // 10-24 posts (22-53%) — acima do limite (vermelho padrao)
+  if (n < 25) {
+    label.textContent = 'Atenção';
+    txt.innerHTML = `<strong>${n} de 45 posts (${pct}%)</strong> foram de pacote ou preço. Acima do limite saudável. Cada post de panfletagem cancela mentalmente um post estratégico. O FMV abaixo é o seu reset.`;
+    return;
+  }
+
+  // 25+ posts (56%+) — critico
+  alerta.classList.add('critical');
+  label.textContent = 'Crítico';
+  txt.innerHTML = `Você não é um panfleteiro digital — você é o ativo da sua agência. <strong>${n} posts de pacote/preço em 45 (${pct}%)</strong> diluiu sua autoridade até a invisibilidade. Recomeçar agora é mais barato do que continuar.`;
 }
 
 // ========== GERAR MAPA ==========
