@@ -1,1 +1,1904 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing High Ticket | Agente High Ticket</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #111111;
+  --surface: #161616;
+  --surface-2: #1d1d1d;
+  --border: #262626;
+  --border-strong: #333333;
+  --text: #f5f5f5;
+  --text-dim: #a3a3a3;
+  --text-muted: #737373;
+  --accent: #99FF00;
+  --accent-dim: #6db000;
+  --accent-dark: #4d7a00;
+  --success: #99FF00;
+  --warning: #ff9500;
+  --danger: #ff3b30;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(153,255,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(153,255,0,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 64px;
+}
+
+.logo-lockup { display: flex; align-items: center; gap: 16px; }
+
+.logo-lockup img {
+  width: 56px; height: auto; display: block;
+  filter: drop-shadow(0 0 24px rgba(153,255,0,0.2));
+}
+
+.brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.meta-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero { margin-bottom: 72px; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+
+h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: clamp(42px, 6vw, 76px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin-bottom: 24px;
+  font-variation-settings: "opsz" 96;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.hero p {
+  max-width: 660px;
+  color: var(--text-dim);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+/* SECTION */
+section { margin-bottom: 64px; scroll-margin-top: 24px; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.section-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 320px;
+  text-align: right;
+  line-height: 1.45;
+}
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+@media (max-width: 720px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+.field {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+  transition: border-color 0.2s ease;
+  margin-bottom: 14px;
+}
+
+.field:focus-within { border-color: var(--accent); }
+.grid-2 .field, .grid-3 .field { margin-bottom: 0; }
+
+.field label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.field .hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.input-wrap { display: flex; align-items: baseline; gap: 8px; }
+
+.prefix {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+input[type="text"], input[type="number"], input[type="date"], input[type="url"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+  padding: 2px 0;
+  letter-spacing: -0.01em;
+  min-width: 0;
+  width: 100%;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.4;
+}
+
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+  padding: 0;
+  resize: vertical;
+  min-height: 80px;
+  letter-spacing: 0.005em;
+}
+textarea::placeholder { color: var(--text-muted); opacity: 0.5; }
+
+.char-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  text-transform: none;
+  transition: color 0.2s ease;
+}
+.char-count.ok { color: var(--accent); }
+
+/* RADIO GROUP (igual perspectiva-group da referência) */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.radio-group.horizontal {
+  flex-direction: row;
+  gap: 10px;
+}
+
+.radio-group.horizontal .radio-opt { flex: 1; }
+
+.radio-opt {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px 20px 16px 48px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  user-select: none;
+}
+
+.radio-opt:hover { border-color: var(--border-strong); }
+
+.radio-opt input[type="radio"] {
+  position: absolute;
+  left: 18px;
+  top: 19px;
+  width: 16px;
+  height: 16px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 0;
+}
+
+.radio-opt input[type="radio"]:checked { border-color: var(--accent); }
+
+.radio-opt input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(153,255,0,0.5);
+}
+
+.radio-opt:has(input:checked) {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(153,255,0,0.04), transparent);
+}
+
+.radio-body { flex: 1; min-width: 0; }
+
+.radio-titulo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.radio-opt:has(input:checked) .radio-titulo { color: var(--accent); }
+
+.radio-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* CHECKBOX (para o item "tem 2+ versões de criativos") */
+.check-field {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 20px 18px 52px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.check-field:hover { border-color: var(--border-strong); }
+
+.check-field input[type="checkbox"] {
+  position: absolute;
+  left: 18px;
+  top: 20px;
+  width: 18px;
+  height: 18px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin: 0;
+}
+
+.check-field input[type="checkbox"]:checked {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.check-field input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -55%);
+  color: #0a0a0a;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.check-field:has(input:checked) {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(153,255,0,0.04), transparent);
+}
+
+.check-titulo {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.check-field:has(input:checked) .check-titulo { color: var(--accent); }
+
+.check-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* SUBSECTION HEADER (dentro de uma section) */
+.subsection {
+  margin-top: 32px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.subsection-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.subsection-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* PERGUNTA CARD (formulário de qualificação) */
+.pergunta-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 22px 26px;
+  margin-bottom: 14px;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+.pergunta-card:focus-within { border-color: var(--accent); }
+.pergunta-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px; height: 100%;
+  background: var(--border-strong);
+  border-radius: 4px 0 0 4px;
+  transition: background 0.2s ease;
+}
+.pergunta-card.complete::before { background: var(--accent); }
+
+.pergunta-head {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.pergunta-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+.pergunta-card.complete .pergunta-num { color: var(--accent); }
+
+.pergunta-card .field {
+  background: var(--bg-2);
+  border-color: var(--border);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.opcao-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  transition: border-color 0.2s ease;
+}
+.opcao-line:focus-within { border-color: var(--accent); }
+
+.opcao-letra {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+.opcao-line input[type="text"] {
+  font-size: 13px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+}
+
+.opcao-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--warning);
+  background: rgba(255,149,0,0.08);
+  border: 1px solid rgba(255,149,0,0.25);
+  padding: 4px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* PREVIEW BADGE (nomenclatura auto-gerada) */
+.auto-preview {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: rgba(153,255,0,0.04);
+  border: 1px dashed rgba(153,255,0,0.2);
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.auto-preview-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.auto-preview-value { word-break: break-all; flex: 1; }
+
+.btn-aplicar {
+  background: transparent;
+  border: 1px solid rgba(153,255,0,0.3);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+.btn-aplicar:hover { background: var(--accent); color: #0a0a0a; }
+
+/* ENTREGA */
+.entrega-wrap {
+  background: linear-gradient(135deg, rgba(153,255,0,0.04), rgba(153,255,0,0.01));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.entrega-head { margin-bottom: 28px; }
+
+.entrega-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.entrega-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.entrega-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+.btn-gerar {
+  width: 100%;
+  padding: 22px 28px;
+  background: var(--accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.btn-gerar:hover:not(:disabled) {
+  background: #b3ff33;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(153,255,0,0.2);
+}
+.btn-gerar:disabled {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  font-weight: 600;
+}
+.btn-gerar.loading {
+  background: var(--accent);
+  color: #0a0a0a;
+  cursor: wait;
+  animation: btnPulse 1.2s ease-in-out infinite;
+  opacity: 0.85;
+}
+@keyframes btnPulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; box-shadow: 0 0 40px rgba(153,255,0,0.35); }
+}
+.btn-gerar .btn-arrow { transition: transform 0.2s ease; font-size: 20px; }
+.btn-gerar:hover:not(:disabled) .btn-arrow { transform: translateX(6px); }
+
+.pending-list {
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+}
+.pending-list:empty { display: none; }
+.pending-list .pending-title {
+  display: block;
+  color: var(--warning);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pending-list ul { list-style: none; }
+.pending-list li::before { content: '— '; color: var(--text-muted); }
+
+/* OUTPUT */
+.prompt-output {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
+}
+
+.output-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.output-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.output-actions { display: flex; gap: 10px; }
+
+.btn-action {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: 3px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+}
+.btn-action:hover { border-color: var(--accent); color: var(--accent); }
+.btn-action.copied { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
+.btn-action .ico { font-size: 16px; font-weight: 400; }
+
+.output-box {
+  background: #000;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 24px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  max-height: 480px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  letter-spacing: 0.01em;
+}
+.output-box::-webkit-scrollbar { width: 8px; }
+.output-box::-webkit-scrollbar-track { background: #0a0a0a; }
+.output-box::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+/* TUTORIAL */
+.tutorial {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: rgba(153,255,0,0.03);
+  border: 1px solid rgba(153,255,0,0.15);
+  border-radius: 3px;
+}
+.tutorial-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.tutorial-list { list-style: none; counter-reset: step; padding: 0; }
+.tutorial-list li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 32px;
+  padding-bottom: 12px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.tutorial-list li:last-child { padding-bottom: 0; }
+.tutorial-list li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0; top: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.tutorial-list li strong { color: var(--text); font-weight: 600; }
+
+/* DISCLAIMER */
+.disclaimer-section { margin-top: 56px; margin-bottom: 0; }
+
+.disclaimer {
+  display: flex;
+  gap: 20px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(153,255,0,0.04), transparent);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+.disclaimer-mark {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(153,255,0,0.08);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(153,255,0,0.2);
+}
+
+.disclaimer-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.disclaimer-body p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.disclaimer-body strong { color: var(--text); }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo-lockup">
+    <div>
+      <div class="brand">AGENTE HIGH TICKET</div>
+      <div class="brand-sub">Metodologia · Pilar 3 · Aquisição</div>
+    </div>
+  </div>
+  <div class="meta-right">Briefing High Ticket</div>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">Pilar 3 · Pré-campanha</div>
+  <h1>Do briefing ao gerenciador:<br>edite, <em>copie e cole</em>.</h1>
+  <p>Antes de abrir o gerenciador, você confirma a estrutura, monta os textos, valida as nomenclaturas e fecha o formulário de qualificação. No fim, o sistema costura tudo num briefing único, pronto pra colar campo a campo no Meta Business sem precisar pensar duas vezes.</p>
+</div>
+
+<!-- 01 IDENTIFICACAO -->
+<section id="s-ident">
+  <div class="section-head">
+    <div>
+      <span class="section-number">01 / 04</span>
+      <h2>Identificação</h2>
+    </div>
+    <div class="section-hint">Personaliza o cabeçalho do briefing final.</div>
+  </div>
+  <div class="grid-2">
+    <div class="field">
+      <label>Seu nome</label>
+      <div class="input-wrap"><input type="text" id="identNome" placeholder="Nome do agente" autocomplete="name"></div>
+      <div class="hint">Operador responsável pela campanha.</div>
+    </div>
+    <div class="field">
+      <label>Nome da agência</label>
+      <div class="input-wrap"><input type="text" id="identAgencia" placeholder="Nome da agência" autocomplete="organization"></div>
+      <div class="hint">Vai compor o nome do formulário e o cabeçalho.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 ESTRUTURA -->
+<section id="s-estrutura">
+  <div class="section-head">
+    <div>
+      <span class="section-number">02 / 04</span>
+      <h2>Estrutura da campanha</h2>
+    </div>
+    <div class="section-hint">As 7 decisões que definem se o anúncio decola ou desperdiça orçamento.</div>
+  </div>
+
+  <div class="field">
+    <label>Tipo de configuração</label>
+    <div class="radio-group horizontal" role="radiogroup">
+      <label class="radio-opt">
+        <input type="radio" name="tipoConfig" value="CBO">
+        <div class="radio-body">
+          <div class="radio-titulo">CBO</div>
+          <div class="radio-desc">Orçamento na campanha. Meta distribui entre conjuntos.</div>
+        </div>
+      </label>
+      <label class="radio-opt">
+        <input type="radio" name="tipoConfig" value="ABO">
+        <div class="radio-body">
+          <div class="radio-titulo">ABO</div>
+          <div class="radio-desc">Orçamento no conjunto. Você controla cada um.</div>
+        </div>
+      </label>
+    </div>
+    <div class="hint">Em testes iniciais, ABO. Em campanhas maduras com criativos validados, CBO.</div>
+  </div>
+
+  <div class="field">
+    <label>Tipo de orçamento</label>
+    <div class="radio-group horizontal" role="radiogroup">
+      <label class="radio-opt">
+        <input type="radio" name="tipoOrcamento" value="Vitalício">
+        <div class="radio-body">
+          <div class="radio-titulo">Vitalício</div>
+          <div class="radio-desc">Valor total dividido pelo período de veiculação.</div>
+        </div>
+      </label>
+      <label class="radio-opt">
+        <input type="radio" name="tipoOrcamento" value="Diário">
+        <div class="radio-body">
+          <div class="radio-titulo">Diário</div>
+          <div class="radio-desc">Valor fixo gasto a cada 24h.</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="field">
+      <label>Valor do orçamento</label>
+      <div class="input-wrap">
+        <span class="prefix">R$</span>
+        <input type="number" id="estOrcamento" placeholder="0,00" min="0" step="0.01">
+      </div>
+      <div class="hint">Em reais. Total se vitalício, diário se diário.</div>
+    </div>
+    <div class="field">
+      <label>Data de início</label>
+      <div class="input-wrap"><input type="date" id="estDataInicio"></div>
+      <div class="hint">Quando a campanha começa a rodar.</div>
+    </div>
+    <div class="field">
+      <label>Data de término</label>
+      <div class="input-wrap"><input type="date" id="estDataFim"></div>
+      <div class="hint">Quando para. Em vitalício é obrigatório.</div>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Região de veiculação</label>
+    <div class="input-wrap"><input type="text" id="estRegiao" placeholder="Ex: Brasil; ou: SP, RJ, MG; ou: cidades A+ (Brasília, Goiânia, Curitiba…)"></div>
+    <div class="hint">Brasil todo, estados específicos ou cidades A+. Quanto mais segmentado, maior o CPL — só restrinja se for estratégico.</div>
+  </div>
+
+  <label class="check-field">
+    <input type="checkbox" id="estVariacoes">
+    <div class="check-titulo">Tenho pelo menos 2 versões diferentes de criativos prontas</div>
+    <div class="check-desc">Sem variação, não tem teste. Sem teste, você está cego — e cego, ninguém escala. Mínimo: 2 vídeos ou 2 imagens com ganchos diferentes.</div>
+  </label>
+
+  <label class="check-field">
+    <input type="checkbox" id="estPixel">
+    <div class="check-titulo">Pixel + Conversões API instalados e validados no site</div>
+    <div class="check-desc">Sem pixel, o Meta não otimiza por qualidade. Confira no Gerenciador de Eventos antes de subir.</div>
+  </label>
+
+  <label class="check-field">
+    <input type="checkbox" id="estBM">
+    <div class="check-titulo">Conta de anúncios e BM saudáveis (sem restrições, sem dívidas)</div>
+    <div class="check-desc">Subir anúncio em BM penalizada é jogar dinheiro fora. Confira a Qualidade da Conta antes.</div>
+  </label>
+</section>
+
+<!-- 03 TEXTOS E NOMENCLATURAS -->
+<section id="s-textos">
+  <div class="section-head">
+    <div>
+      <span class="section-number">03 / 04</span>
+      <h2>Textos & nomenclaturas</h2>
+    </div>
+    <div class="section-hint">Edite os templates pra refletir o seu nicho. Ou mantenha — eles já foram validados.</div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Textos do criativo</span>
+    <span class="subsection-count">3 campos</span>
+  </div>
+
+  <div class="field">
+    <label>Texto principal <span class="char-count" data-counter="txtPrincipal">0 chars</span></label>
+    <textarea id="txtPrincipal" rows="6" placeholder="Texto do feed">✈️ Quando existe estratégia, o mesmo orçamento vira outra viagem.
+
+Do lado de cá, eu consigo fazer o seu investimento de viagem render até 3x mais.
+
+👉 Toque no SAIBA MAIS, preencha um breve formulário e fale comigo no Whatsapp.</textarea>
+    <div class="hint">Estrutura: gancho » contexto curto » CTA. Mantém-se debaixo do "Veja mais" do feed.</div>
+  </div>
+
+  <div class="grid-2">
+    <div class="field">
+      <label>Título — linha 1</label>
+      <div class="input-wrap"><input type="text" id="txtTitulo1" value="✈️ Consultoria de Viagem | [Sua Agência]" maxlength="40"></div>
+      <div class="hint">Aparece em destaque. Categoria + marca.</div>
+    </div>
+    <div class="field">
+      <label>Título — linha 2</label>
+      <div class="input-wrap"><input type="text" id="txtTitulo2" value="🗓 Agende uma Reunião Individual" maxlength="40"></div>
+      <div class="hint">Reforço de CTA. Verbo + benefício.</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Nomenclaturas</span>
+    <span class="subsection-count">3 campos</span>
+  </div>
+
+  <div class="field">
+    <label>Nome da campanha</label>
+    <div class="input-wrap"><input type="text" id="nomCampanha" placeholder="[15/04/26] CBO | Lead | Form v1"></div>
+    <div class="hint">Formato: [data] | tipo | objetivo | filtro/produto. A sugestão automática aparece abaixo conforme você preenche o bloco anterior.</div>
+    <div class="auto-preview" id="previewCampanha" style="display:none">
+      <span class="auto-preview-label">Sugestão</span>
+      <span class="auto-preview-value" id="previewCampanhaValue">—</span>
+      <button type="button" class="btn-aplicar" data-target="nomCampanha" data-source="previewCampanhaValue">Aplicar</button>
+    </div>
+  </div>
+
+  <div class="field">
+    <label>Nome do conjunto</label>
+    <div class="input-wrap"><input type="text" id="nomConjunto" placeholder="ABT | 25+ | Adv+"></div>
+    <div class="hint">Formato: segmentação | idade | posicionamento. ABT = Advantage Broad Targeting. Adv+ = Advantage+ Placements.</div>
+  </div>
+
+  <div class="field">
+    <label>Nome do criativo</label>
+    <div class="input-wrap"><input type="text" id="nomCriativo" placeholder="001 - Vista lateral"></div>
+    <div class="hint">Formato: numeração | identificação. Use 3 dígitos pra ordenar bem (001, 002…).</div>
+  </div>
+</section>
+
+<!-- 04 FORMULARIO QUALIFICACAO -->
+<section id="s-form">
+  <div class="section-head">
+    <div>
+      <span class="section-number">04 / 04</span>
+      <h2>Formulário de qualificação</h2>
+    </div>
+    <div class="section-hint">As 4 perguntas que separam quem tem problema, urgência e dinheiro de quem não tem. Edite só o que precisar adaptar ao seu nicho.</div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Configurações fixas</span>
+    <span class="subsection-count">parâmetros do método</span>
+  </div>
+
+  <div class="field">
+    <label>Nome do formulário</label>
+    <div class="input-wrap"><input type="text" id="formNome" placeholder="[Nome da Agência] Leads Web (v1)"></div>
+    <div class="hint">Formato: [empresa] objetivo | versão. A sugestão aparece quando você preenche a Identificação.</div>
+    <div class="auto-preview" id="previewFormNome" style="display:none">
+      <span class="auto-preview-label">Sugestão</span>
+      <span class="auto-preview-value" id="previewFormNomeValue">—</span>
+      <button type="button" class="btn-aplicar" data-target="formNome" data-source="previewFormNomeValue">Aplicar</button>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="field">
+      <label>Tipo de formulário</label>
+      <div class="input-wrap"><input type="text" value="Mais volume" readonly style="color:var(--accent)"></div>
+      <div class="hint">Padrão AHT. Não altere.</div>
+    </div>
+    <div class="field">
+      <label>Entrega flexível</label>
+      <div class="input-wrap"><input type="text" value="Desabilitado" readonly style="color:var(--accent)"></div>
+      <div class="hint">Padrão AHT. Não altere.</div>
+    </div>
+    <div class="field">
+      <label>Imagem do formulário</label>
+      <div class="input-wrap"><input type="text" value="Horizontal" readonly style="color:var(--accent)"></div>
+      <div class="hint">Padrão AHT. Não altere.</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Saudação</span>
+    <span class="subsection-count">tela de abertura</span>
+  </div>
+
+  <div class="field">
+    <label>Título</label>
+    <div class="input-wrap"><input type="text" id="formTitulo" value="Formulário para Consultoria de Viagem Internacional"></div>
+    <div class="hint">Adapte ao seu nicho (ex: nacional, lua de mel, cruzeiros, Disney…).</div>
+  </div>
+
+  <div class="field">
+    <label>Descrição</label>
+    <textarea id="formDescricao" rows="4">Responda com atenção. Ao final, a depender das suas respostas, você poderá agendar uma Consultoria de Viagens com a nossa equipe.</textarea>
+    <div class="hint">Antecipa que o filtro existe. Sem essa frase, qualquer pessoa entra achando que vai falar com você.</div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">As 4 perguntas de qualificação</span>
+    <span class="subsection-count">opções marcadas como "Não Lead" enviam pra página de saída</span>
+  </div>
+
+  <!-- PERGUNTA 1 -->
+  <div class="pergunta-card" id="p1">
+    <div class="pergunta-head">
+      <span class="pergunta-num">PERGUNTA 01 · PERFIL</span>
+    </div>
+    <div class="field">
+      <label>Enunciado</label>
+      <textarea id="p1Texto" rows="3">A consultoria da [sua Agência] é focada em viajantes que buscam segurança, experiências e curadoria em viagens internacionais, delegando o operacional para especialistas. Você se enquadra nesse perfil?</textarea>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">A</span>
+      <input type="text" id="p1a" value="Sim, é exatamente o que eu quero">
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">B</span>
+      <input type="text" id="p1b" value="Não, prefiro eu mesmo pesquisar tudo e focar apenas no menor preço">
+      <span class="opcao-tag">Não Lead</span>
+    </div>
+  </div>
+
+  <!-- PERGUNTA 2 -->
+  <div class="pergunta-card" id="p2">
+    <div class="pergunta-head">
+      <span class="pergunta-num">PERGUNTA 02 · URGÊNCIA</span>
+    </div>
+    <div class="field">
+      <label>Enunciado</label>
+      <textarea id="p2Texto" rows="3">Sobre o objetivo e o prazo da sua viagem, em qual estágio você se encontra hoje?</textarea>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">A</span>
+      <input type="text" id="p2a" value="Estou apenas pesquisando ideias e referências para uma viagem que pretendo realizar daqui 12 meses ou mais">
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">B</span>
+      <input type="text" id="p2b" value="Já tenho uma ideia em mente, mas ainda não defini a data exata e não tenho pressa para fechar a viagem">
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">C</span>
+      <input type="text" id="p2c" value="Tenho um motivo especial, data definida e estou pronto para iniciar o planejamento agora">
+    </div>
+  </div>
+
+  <!-- PERGUNTA 3 -->
+  <div class="pergunta-card" id="p3">
+    <div class="pergunta-head">
+      <span class="pergunta-num">PERGUNTA 03 · EXPECTATIVA DE SUPORTE</span>
+    </div>
+    <div class="field">
+      <label>Enunciado</label>
+      <textarea id="p3Texto" rows="3">Em relação ao suporte durante o planejamento e a execução da viagem, o que você busca?</textarea>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">A</span>
+      <input type="text" id="p3a" value="Quero 'dicas' e orçamentos para eu mesmo comparar com o que encontro na internet e tentar economizar ao máximo">
+      <span class="opcao-tag">Não Lead</span>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">B</span>
+      <input type="text" id="p3b" value="Busco alguém que faça as reservas por mim, desde que o preço final seja menor do que o da Internet">
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">C</span>
+      <input type="text" id="p3c" value="Busco uma consultoria que me ofereça suporte e eventuais acessos privilegiados que eu não encontraria sozinho">
+    </div>
+  </div>
+
+  <!-- PERGUNTA 4 -->
+  <div class="pergunta-card" id="p4">
+    <div class="pergunta-head">
+      <span class="pergunta-num">PERGUNTA 04 · RELAÇÃO COM INVESTIMENTO</span>
+    </div>
+    <div class="field">
+      <label>Enunciado</label>
+      <textarea id="p4Texto" rows="3">Como você define a sua relação com o investimento para esta viagem?</textarea>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">A</span>
+      <input type="text" id="p4a" value="Tenho um orçamento limitado e aceito abrir mão de algum conforto, desde que isso traga economia">
+      <span class="opcao-tag">Não Lead</span>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">B</span>
+      <input type="text" id="p4b" value="Entendo que essa viagem exige um investimento compatível e valorizo consultoria que proteja meu tempo e meu capital">
+    </div>
+  </div>
+
+  <!-- PERGUNTA 5 -->
+  <div class="pergunta-card" id="p5">
+    <div class="pergunta-head">
+      <span class="pergunta-num">PERGUNTA 05 · PRIORIDADE</span>
+    </div>
+    <div class="field">
+      <label>Enunciado</label>
+      <textarea id="p5Texto" rows="3">O planejamento dessa viagem é uma prioridade ou é algo que você quer estruturar "quando sobrar tempo"?</textarea>
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">A</span>
+      <input type="text" id="p5a" value="É uma prioridade real. Quero resolver isso nos próximos dias">
+    </div>
+    <div class="opcao-line">
+      <span class="opcao-letra">B</span>
+      <input type="text" id="p5b" value="Ainda estou tentando encaixar quando 'sobrar tempo'">
+      <span class="opcao-tag">Não Lead</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Política de privacidade & avisos</span>
+    <span class="subsection-count">obrigatório por LGPD</span>
+  </div>
+
+  <div class="field">
+    <label>Link da política de privacidade</label>
+    <div class="input-wrap"><input type="url" id="formPolitica" placeholder="https://suaagencia.com/politica-de-privacidade"></div>
+    <div class="hint">Link público com a política. Sem isso, o Meta pode reprovar o formulário.</div>
+  </div>
+
+  <div class="field">
+    <label>Texto do aviso personalizado</label>
+    <textarea id="formAviso" rows="3">Clique no botão ENVIAR e na próxima página clique em FALAR NO WHATSAPP. Sem isto o seu cadastro ficará pendente.</textarea>
+    <div class="hint">Texto que aparece antes do envio. Reduz drasticamente o lead que envia e some.</div>
+  </div>
+
+  <div class="subsection">
+    <span class="subsection-title">Páginas finais</span>
+    <span class="subsection-count">2 destinos: lead qualificado e não-lead</span>
+  </div>
+
+  <div class="field">
+    <label>E1 — Página final para LEADS</label>
+    <textarea id="formE1Desc" rows="3">Clique em "FALAR NO WHATSAPP" para que possamos prosseguir com o agendamento da sua Consultoria de Viagem Internacional.</textarea>
+    <div class="hint">CTA: <strong>FALAR NO WHATSAPP</strong>. Ação: Conversar no WhatsApp da agência.</div>
+  </div>
+
+  <div class="field">
+    <label>E2 — Página final para NÃO-LEADS</label>
+    <textarea id="formE2Desc" rows="6">Pelas suas respostas, percebi que você está numa fase de planejamento autônomo, em que prefere cuidar pessoalmente de cada detalhe da viagem.
+
+Por conta disso, você ainda não possui o perfil para a nossa Consultoria, que é um serviço focado em quem deseja delegar a organização para ganhar tempo e segurança.
+
+Eu quero lhe convidar a seguir o nosso perfil no Instagram porque toda semana compartilhamos insights de destinos exclusivos, dicas de segurança e bastidores que vão te ajudar a elevar o nível das suas experiências, mesmo que você esteja organizando tudo por conta própria agora.
+
+Toque no botão abaixo para nos acompanhar:</textarea>
+    <div class="hint">CTA: <strong>ACESSAR AGORA</strong>. Direciona pro Instagram da agência.</div>
+  </div>
+
+  <div class="field">
+    <label>Link do Instagram (botão da página E2)</label>
+    <div class="input-wrap"><input type="url" id="formInstagram" placeholder="https://instagram.com/suaagencia"></div>
+    <div class="hint">Quem não passa no filtro segue acompanhando o conteúdo. LTV de longo prazo.</div>
+  </div>
+</section>
+
+<!-- ENTREGA -->
+<section id="s-entrega">
+  <div class="entrega-wrap">
+    <div class="entrega-head">
+      <div class="entrega-eyebrow">O briefing pronto</div>
+      <h2 class="entrega-title">Pronto pra colar no Meta Business</h2>
+      <p class="entrega-desc">Quando todos os campos críticos estiverem preenchidos, o sistema costura tudo num único briefing organizado por blocos. Abra o Gerenciador de Anúncios numa aba, o briefing na outra, e configure campo a campo. Sem improviso, sem esquecer nada.</p>
+    </div>
+
+    <button type="button" class="btn-gerar" id="btnGerar" disabled>
+      <span class="btn-label">Preencha os campos obrigatórios</span>
+      <span class="btn-arrow">→</span>
+    </button>
+
+    <div class="pending-list" id="pendingList"></div>
+
+    <div class="prompt-output" id="promptOutput" style="display:none">
+      <div class="output-head">
+        <div class="output-title">Seu briefing está pronto</div>
+        <div class="output-actions">
+          <button type="button" class="btn-action" id="btnCopiar"><span class="ico">⧉</span> Copiar</button>
+          <button type="button" class="btn-action" id="btnBaixar"><span class="ico">↓</span> Baixar .txt</button>
+          <button type="button" class="btn-action" id="btnCopiarMd"><span class="ico">⧉</span> Copiar MD</button>
+          <button type="button" class="btn-action" id="btnBaixarMd"><span class="ico">↓</span> Baixar .md</button>
+        </div>
+      </div>
+      <div class="output-box" id="promptBox"></div>
+
+      <div class="tutorial">
+        <div class="tutorial-title">Sequência de execução no Meta Business</div>
+        <ol class="tutorial-list">
+          <li>Abra o <strong>Gerenciador de Anúncios</strong> numa aba e o seu briefing na outra.</li>
+          <li>Crie a campanha usando o <strong>nome, tipo (CBO/ABO) e tipo de orçamento</strong> do briefing.</li>
+          <li>Configure o conjunto: <strong>orçamento, datas, região e nomenclatura</strong> exatamente como descritos.</li>
+          <li>Suba os criativos com <strong>texto principal e títulos</strong> do briefing. Mínimo 2 versões.</li>
+          <li>Crie o formulário em <strong>Biblioteca de Mídia → Formulários Instantâneos</strong> seguindo as 5 perguntas.</li>
+          <li>Configure E1 (lead) com botão <strong>FALAR NO WHATSAPP</strong> e E2 (não-lead) com link do Instagram.</li>
+          <li>Antes de publicar, revise <strong>Pixel, Conversões API e saúde da BM</strong> uma última vez.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="disclaimer-section">
+  <div class="disclaimer">
+    <div class="disclaimer-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+    </div>
+    <div class="disclaimer-body">
+      <div class="disclaimer-title">Material de uso exclusivo</div>
+      <p>Este briefing faz parte da metodologia <strong>Agente High Ticket</strong> e foi disponibilizado apenas para as agências vinculadas ao programa. Copiar, redistribuir, reproduzir ou compartilhar este conteúdo — no todo ou em parte — sem autorização expressa constitui violação de direitos autorais prevista na Lei nº 9.610/98 e, além disso, é feio pra caramba.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>AGENTE HIGH TICKET</div>
+  <div>Metodologia · Pilar 3 · Pré-campanha</div>
+</footer>
+
+</div>
+
+<script>
+// ========== HELPERS ==========
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? (el.value || '').trim() : '';
+}
+
+function radioVal(name) {
+  const el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? el.value : '';
+}
+
+function checked(id) {
+  const el = document.getElementById(id);
+  return el ? el.checked : false;
+}
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-');
+  return d + '/' + m + '/' + y.slice(-2);
+}
+
+function fmtDateLong(iso) {
+  if (!iso) return '';
+  const [y, m, d] = iso.split('-');
+  return d + '/' + m + '/' + y;
+}
+
+function fmtMoney(v) {
+  if (!v) return '';
+  const n = parseFloat(v);
+  if (isNaN(n)) return '';
+  return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// ========== AUTO-PREVIEWS ==========
+function gerarPreviewCampanha() {
+  const data = fmtDate(val('estDataInicio'));
+  const tipo = radioVal('tipoConfig');
+  const sugestao = '[' + (data || 'DD/MM/AA') + '] ' + (tipo || 'CBO') + ' | Lead | Form v1';
+
+  const box = document.getElementById('previewCampanha');
+  const valEl = document.getElementById('previewCampanhaValue');
+
+  if (data && tipo) {
+    valEl.textContent = sugestao;
+    box.style.display = 'flex';
+  } else {
+    box.style.display = 'none';
+  }
+}
+
+function gerarPreviewFormNome() {
+  const ag = val('identAgencia');
+  const sugestao = '[' + (ag || 'Agência') + '] Leads Web (v1)';
+
+  const box = document.getElementById('previewFormNome');
+  const valEl = document.getElementById('previewFormNomeValue');
+
+  if (ag) {
+    valEl.textContent = sugestao;
+    box.style.display = 'flex';
+  } else {
+    box.style.display = 'none';
+  }
+}
+
+// ========== BTN APLICAR (sugestão) ==========
+document.querySelectorAll('.btn-aplicar').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.getElementById(btn.dataset.target);
+    const sourceEl = document.getElementById(btn.dataset.source);
+    if (target && sourceEl) {
+      target.value = sourceEl.textContent;
+      target.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+});
+
+// ========== CHAR COUNTER (texto principal) ==========
+function updateCharCount() {
+  const el = document.getElementById('txtPrincipal');
+  const counter = document.querySelector('[data-counter="txtPrincipal"]');
+  if (!el || !counter) return;
+  counter.textContent = el.value.length + ' chars';
+  if (el.value.length > 30) counter.classList.add('ok');
+  else counter.classList.remove('ok');
+}
+
+// ========== PERGUNTA STATUS ==========
+function updatePerguntaStatus() {
+  const cards = ['p1', 'p2', 'p3', 'p4', 'p5'];
+  cards.forEach(id => {
+    const card = document.getElementById(id);
+    if (!card) return;
+    const inputs = card.querySelectorAll('input[type="text"], textarea');
+    const allFilled = Array.from(inputs).every(i => i.value.trim().length > 0);
+    if (allFilled) card.classList.add('complete');
+    else card.classList.remove('complete');
+  });
+}
+
+// ========== VALIDACAO (campos obrigatórios para gerar briefing) ==========
+const REQUIRED = [
+  { check: () => val('identNome').length > 0, label: 'Seu nome' },
+  { check: () => val('identAgencia').length > 0, label: 'Nome da agência' },
+  { check: () => radioVal('tipoConfig').length > 0, label: 'Tipo de configuração (CBO/ABO)' },
+  { check: () => radioVal('tipoOrcamento').length > 0, label: 'Tipo de orçamento (Vitalício/Diário)' },
+  { check: () => val('estOrcamento').length > 0, label: 'Valor do orçamento' },
+  { check: () => val('estDataInicio').length > 0, label: 'Data de início' },
+  { check: () => val('estRegiao').length > 0, label: 'Região de veiculação' },
+  { check: () => checked('estVariacoes'), label: 'Confirmar 2+ versões de criativos' },
+  { check: () => checked('estPixel'), label: 'Confirmar Pixel + Conversões API' },
+  { check: () => checked('estBM'), label: 'Confirmar saúde da BM' },
+  { check: () => val('txtPrincipal').length > 30, label: 'Texto principal do criativo' },
+  { check: () => val('nomCampanha').length > 0, label: 'Nome da campanha' },
+  { check: () => val('nomConjunto').length > 0, label: 'Nome do conjunto' },
+  { check: () => val('nomCriativo').length > 0, label: 'Nome do criativo' },
+  { check: () => val('formNome').length > 0, label: 'Nome do formulário' },
+  { check: () => val('formPolitica').length > 0, label: 'Link da política de privacidade' },
+  { check: () => val('formInstagram').length > 0, label: 'Link do Instagram (página E2)' }
+];
+
+function validar() {
+  return REQUIRED.filter(r => !r.check());
+}
+
+function atualizarBotao() {
+  const pendentes = validar();
+  const btn = document.getElementById('btnGerar');
+  const label = btn.querySelector('.btn-label');
+  const pending = document.getElementById('pendingList');
+
+  if (pendentes.length === 0) {
+    btn.disabled = false;
+    label.textContent = 'Gerar briefing';
+    pending.innerHTML = '';
+  } else {
+    btn.disabled = true;
+    label.textContent = pendentes.length + ' campo' + (pendentes.length > 1 ? 's' : '') + ' pendente' + (pendentes.length > 1 ? 's' : '');
+    const items = pendentes.map(p => '<li>' + p.label + '</li>').join('');
+    pending.innerHTML = '<span class="pending-title">Faltando:</span><ul>' + items + '</ul>';
+  }
+}
+
+// ========== EVENT WIRING ==========
+document.addEventListener('input', (e) => {
+  if (e.target.matches('input, textarea')) {
+    if (e.target.id === 'estDataInicio' || e.target.id === 'identAgencia') {
+      gerarPreviewCampanha();
+      gerarPreviewFormNome();
+    }
+    if (e.target.id === 'txtPrincipal') updateCharCount();
+    updatePerguntaStatus();
+    atualizarBotao();
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.matches('input[type="radio"], input[type="checkbox"]')) {
+    if (e.target.name === 'tipoConfig') gerarPreviewCampanha();
+    atualizarBotao();
+  }
+});
+
+// ========== GERAR BRIEFING ==========
+function gerarBriefing() {
+  const linha = '═'.repeat(56);
+  const sublinha = '─'.repeat(56);
+
+  const hoje = new Date();
+  const dataGeracao = String(hoje.getDate()).padStart(2,'0') + '/' +
+                      String(hoje.getMonth()+1).padStart(2,'0') + '/' +
+                      hoje.getFullYear();
+
+  let out = '';
+  out += linha + '\n';
+  out += ' BRIEFING HIGH TICKET\n';
+  out += ' ' + (val('identAgencia') || '—') + '\n';
+  out += ' Operador: ' + (val('identNome') || '—') + '\n';
+  out += ' Gerado em: ' + dataGeracao + '\n';
+  out += linha + '\n\n';
+
+  // 01 ESTRUTURA
+  out += '┌─ 01 / ESTRUTURA DA CAMPANHA ' + '─'.repeat(26) + '\n';
+  out += '│\n';
+  out += '│ Configuração:        ' + radioVal('tipoConfig') + '\n';
+  out += '│ Tipo de orçamento:   ' + radioVal('tipoOrcamento') + '\n';
+  out += '│ Valor do orçamento:  ' + fmtMoney(val('estOrcamento')) + '\n';
+  out += '│ Data de início:      ' + fmtDateLong(val('estDataInicio')) + '\n';
+  out += '│ Data de término:     ' + (val('estDataFim') ? fmtDateLong(val('estDataFim')) : '(sem data fim)') + '\n';
+  out += '│ Região:              ' + val('estRegiao') + '\n';
+  out += '│\n';
+  out += '│ ✓ 2+ versões de criativos prontas\n';
+  out += '│ ✓ Pixel + Conversões API instalados\n';
+  out += '│ ✓ BM saudável (sem restrições)\n';
+  out += '└' + '─'.repeat(55) + '\n\n';
+
+  // 02 NOMENCLATURAS
+  out += '┌─ 02 / NOMENCLATURAS ' + '─'.repeat(34) + '\n';
+  out += '│\n';
+  out += '│ CAMPANHA:  ' + val('nomCampanha') + '\n';
+  out += '│ CONJUNTO:  ' + val('nomConjunto') + '\n';
+  out += '│ CRIATIVO:  ' + val('nomCriativo') + '\n';
+  out += '└' + '─'.repeat(55) + '\n\n';
+
+  // 03 TEXTOS
+  out += '┌─ 03 / TEXTOS DO CRIATIVO ' + '─'.repeat(29) + '\n';
+  out += '│\n';
+  out += '│ TEXTO PRINCIPAL:\n';
+  out += val('txtPrincipal').split('\n').map(l => '│ ' + l).join('\n') + '\n';
+  out += '│\n';
+  out += '│ TÍTULO LINHA 1:  ' + val('txtTitulo1') + '\n';
+  out += '│ TÍTULO LINHA 2:  ' + val('txtTitulo2') + '\n';
+  out += '└' + '─'.repeat(55) + '\n\n';
+
+  // 04 FORMULARIO - CONFIG
+  out += '┌─ 04 / FORMULÁRIO DE QUALIFICAÇÃO ' + '─'.repeat(21) + '\n';
+  out += '│\n';
+  out += '│ NOME:                 ' + val('formNome') + '\n';
+  out += '│ TIPO:                 Mais volume\n';
+  out += '│ ENTREGA FLEXÍVEL:     Desabilitado\n';
+  out += '│ IMAGEM:               Horizontal\n';
+  out += '│ SAUDAÇÃO:             Ativada\n';
+  out += '│\n';
+  out += '│ ' + sublinha + '\n';
+  out += '│ TÍTULO:\n';
+  out += '│ ' + val('formTitulo') + '\n';
+  out += '│\n';
+  out += '│ DESCRIÇÃO:\n';
+  out += val('formDescricao').split('\n').map(l => '│ ' + l).join('\n') + '\n';
+
+  // PERGUNTAS
+  out += '│\n│ ' + sublinha + '\n';
+  out += '│ AS 5 PERGUNTAS\n';
+  out += '│ ' + sublinha + '\n│\n';
+
+  // P1
+  out += '│ [P1] ' + val('p1Texto') + '\n';
+  out += '│   a) ' + val('p1a') + '\n';
+  out += '│   b) ' + val('p1b') + '   → NÃO LEAD\n';
+  out += '│\n';
+
+  // P2
+  out += '│ [P2] ' + val('p2Texto') + '\n';
+  out += '│   a) ' + val('p2a') + '\n';
+  out += '│   b) ' + val('p2b') + '\n';
+  out += '│   c) ' + val('p2c') + '\n';
+  out += '│\n';
+
+  // P3
+  out += '│ [P3] ' + val('p3Texto') + '\n';
+  out += '│   a) ' + val('p3a') + '   → NÃO LEAD\n';
+  out += '│   b) ' + val('p3b') + '\n';
+  out += '│   c) ' + val('p3c') + '\n';
+  out += '│\n';
+
+  // P4
+  out += '│ [P4] ' + val('p4Texto') + '\n';
+  out += '│   a) ' + val('p4a') + '   → NÃO LEAD\n';
+  out += '│   b) ' + val('p4b') + '\n';
+  out += '│\n';
+
+  // P5
+  out += '│ [P5] ' + val('p5Texto') + '\n';
+  out += '│   a) ' + val('p5a') + '\n';
+  out += '│   b) ' + val('p5b') + '   → NÃO LEAD\n';
+  out += '│\n';
+
+  // Privacidade
+  out += '│ ' + sublinha + '\n';
+  out += '│ POLÍTICA DE PRIVACIDADE\n';
+  out += '│ Link: ' + val('formPolitica') + '\n';
+  out += '│ Texto do link: Acesse a Política de Privacidade da ' + val('identAgencia') + '\n';
+  out += '│\n';
+
+  // Aviso
+  out += '│ AVISO PERSONALIZADO\n';
+  out += '│ Título: Etapa necessária: enviar o formulário e nos acionar no WhatsApp.\n';
+  out += '│ Texto:\n';
+  out += val('formAviso').split('\n').map(l => '│ ' + l).join('\n') + '\n';
+  out += '│\n';
+
+  // E1
+  out += '│ ' + sublinha + '\n';
+  out += '│ E1 — PÁGINA FINAL PARA LEADS\n';
+  out += '│ Título: Falta apenas 1 etapa.\n';
+  out += '│ Descrição:\n';
+  out += val('formE1Desc').split('\n').map(l => '│ ' + l).join('\n') + '\n';
+  out += '│ Ação adicional:  Conversar no WhatsApp\n';
+  out += '│ CTA:             FALAR NO WHATSAPP\n';
+  out += '│\n';
+
+  // E2
+  out += '│ E2 — PÁGINA FINAL PARA NÃO-LEADS\n';
+  out += '│ Título: Agradeço seu interesse!\n';
+  out += '│ Descrição:\n';
+  out += val('formE2Desc').split('\n').map(l => '│ ' + l).join('\n') + '\n';
+  out += '│ CTA:             ACESSAR AGORA\n';
+  out += '│ Link:            ' + val('formInstagram') + '\n';
+  out += '└' + '─'.repeat(55) + '\n\n';
+
+  out += linha + '\n';
+  out += ' FIM DO BRIEFING · Agente High Ticket\n';
+  out += linha + '\n';
+
+  return out;
+}
+
+// ========== GERAR BRIEFING (MARKDOWN) ==========
+function gerarBriefingMarkdown() {
+  const hoje = new Date();
+  const dataGeracao = String(hoje.getDate()).padStart(2,'0') + '/' +
+                      String(hoje.getMonth()+1).padStart(2,'0') + '/' +
+                      hoje.getFullYear();
+
+  const blockquote = (txt) => txt.split('\n').map(l => l.trim() ? '> ' + l : '>').join('\n');
+
+  let out = '';
+  out += '# Briefing High Ticket\n\n';
+  out += '**Agência:** ' + (val('identAgencia') || '—') + '  \n';
+  out += '**Operador:** ' + (val('identNome') || '—') + '  \n';
+  out += '**Gerado em:** ' + dataGeracao + '\n\n';
+  out += '---\n\n';
+
+  // 01 ESTRUTURA
+  out += '## 01 / Estrutura da campanha\n\n';
+  out += '| Campo | Valor |\n';
+  out += '|---|---|\n';
+  out += '| Configuração | **' + radioVal('tipoConfig') + '** |\n';
+  out += '| Tipo de orçamento | ' + radioVal('tipoOrcamento') + ' |\n';
+  out += '| Valor do orçamento | ' + fmtMoney(val('estOrcamento')) + ' |\n';
+  out += '| Data de início | ' + fmtDateLong(val('estDataInicio')) + ' |\n';
+  out += '| Data de término | ' + (val('estDataFim') ? fmtDateLong(val('estDataFim')) : '_(sem data fim)_') + ' |\n';
+  out += '| Região | ' + val('estRegiao') + ' |\n\n';
+
+  out += '**Confirmações pré-campanha:**\n\n';
+  out += '- ✓ 2+ versões de criativos prontas\n';
+  out += '- ✓ Pixel + Conversões API instalados\n';
+  out += '- ✓ BM saudável (sem restrições)\n\n';
+  out += '---\n\n';
+
+  // 02 NOMENCLATURAS
+  out += '## 02 / Nomenclaturas\n\n';
+  out += '- **Campanha:** `' + val('nomCampanha') + '`\n';
+  out += '- **Conjunto:** `' + val('nomConjunto') + '`\n';
+  out += '- **Criativo:** `' + val('nomCriativo') + '`\n\n';
+  out += '---\n\n';
+
+  // 03 TEXTOS
+  out += '## 03 / Textos do criativo\n\n';
+  out += '### Texto principal\n\n';
+  out += blockquote(val('txtPrincipal')) + '\n\n';
+  out += '### Títulos\n\n';
+  out += '- **Linha 1:** ' + val('txtTitulo1') + '\n';
+  out += '- **Linha 2:** ' + val('txtTitulo2') + '\n\n';
+  out += '---\n\n';
+
+  // 04 FORMULARIO
+  out += '## 04 / Formulário de qualificação\n\n';
+  out += '### Configurações\n\n';
+  out += '| Campo | Valor |\n';
+  out += '|---|---|\n';
+  out += '| Nome | `' + val('formNome') + '` |\n';
+  out += '| Tipo | Mais volume |\n';
+  out += '| Entrega flexível | Desabilitado |\n';
+  out += '| Imagem | Horizontal |\n';
+  out += '| Saudação | Ativada |\n\n';
+
+  out += '### Saudação\n\n';
+  out += '**Título:** ' + val('formTitulo') + '\n\n';
+  out += '**Descrição:**\n\n';
+  out += blockquote(val('formDescricao')) + '\n\n';
+
+  out += '### As 5 perguntas\n\n';
+
+  // P1
+  out += '#### P1 — Perfil\n\n';
+  out += blockquote(val('p1Texto')) + '\n\n';
+  out += '- **a)** ' + val('p1a') + '\n';
+  out += '- **b)** ' + val('p1b') + ' — `→ NÃO LEAD`\n\n';
+
+  // P2
+  out += '#### P2 — Urgência\n\n';
+  out += blockquote(val('p2Texto')) + '\n\n';
+  out += '- **a)** ' + val('p2a') + '\n';
+  out += '- **b)** ' + val('p2b') + '\n';
+  out += '- **c)** ' + val('p2c') + '\n\n';
+
+  // P3
+  out += '#### P3 — Expectativa de suporte\n\n';
+  out += blockquote(val('p3Texto')) + '\n\n';
+  out += '- **a)** ' + val('p3a') + ' — `→ NÃO LEAD`\n';
+  out += '- **b)** ' + val('p3b') + '\n';
+  out += '- **c)** ' + val('p3c') + '\n\n';
+
+  // P4
+  out += '#### P4 — Relação com investimento\n\n';
+  out += blockquote(val('p4Texto')) + '\n\n';
+  out += '- **a)** ' + val('p4a') + ' — `→ NÃO LEAD`\n';
+  out += '- **b)** ' + val('p4b') + '\n\n';
+
+  // P5
+  out += '#### P5 — Prioridade\n\n';
+  out += blockquote(val('p5Texto')) + '\n\n';
+  out += '- **a)** ' + val('p5a') + '\n';
+  out += '- **b)** ' + val('p5b') + ' — `→ NÃO LEAD`\n\n';
+
+  // Privacidade
+  out += '### Política de privacidade\n\n';
+  out += '- **Link:** ' + val('formPolitica') + '\n';
+  out += '- **Texto do link:** Acesse a Política de Privacidade da ' + val('identAgencia') + '\n\n';
+
+  // Aviso
+  out += '### Aviso personalizado\n\n';
+  out += '**Título:** Etapa necessária: enviar o formulário e nos acionar no WhatsApp.\n\n';
+  out += '**Texto:**\n\n';
+  out += blockquote(val('formAviso')) + '\n\n';
+
+  // E1
+  out += '### E1 — Página final para LEADS\n\n';
+  out += '**Título:** Falta apenas 1 etapa.\n\n';
+  out += '**Descrição:**\n\n';
+  out += blockquote(val('formE1Desc')) + '\n\n';
+  out += '- **Ação adicional:** Conversar no WhatsApp\n';
+  out += '- **CTA:** `FALAR NO WHATSAPP`\n\n';
+
+  // E2
+  out += '### E2 — Página final para NÃO-LEADS\n\n';
+  out += '**Título:** Agradeço seu interesse!\n\n';
+  out += '**Descrição:**\n\n';
+  out += blockquote(val('formE2Desc')) + '\n\n';
+  out += '- **CTA:** `ACESSAR AGORA`\n';
+  out += '- **Link:** ' + val('formInstagram') + '\n\n';
+
+  out += '---\n\n';
+  out += '_Fim do briefing — Agente High Ticket_\n';
+
+  return out;
+}
+
+// ========== BOTAO GERAR ==========
+document.getElementById('btnGerar').addEventListener('click', () => {
+  if (validar().length > 0) return;
+
+  const btn = document.getElementById('btnGerar');
+  const label = btn.querySelector('.btn-label');
+  const labelOriginal = label.textContent;
+
+  btn.disabled = true;
+  label.textContent = 'Compilando briefing...';
+  btn.classList.add('loading');
+
+  setTimeout(() => {
+    const briefing = gerarBriefing();
+    document.getElementById('promptBox').textContent = briefing;
+    document.getElementById('promptOutput').style.display = 'block';
+
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    label.textContent = labelOriginal;
+
+    document.getElementById('promptOutput').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 1200);
+});
+
+// ========== COPIAR / BAIXAR ==========
+document.getElementById('btnCopiar').addEventListener('click', async () => {
+  const texto = document.getElementById('promptBox').textContent;
+  const btn = document.getElementById('btnCopiar');
+  try {
+    await navigator.clipboard.writeText(texto);
+    btn.classList.add('copied');
+    btn.innerHTML = '<span class="ico">✓</span> Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<span class="ico">⧉</span> Copiar';
+    }, 2400);
+  } catch (e) {
+    const range = document.createRange();
+    range.selectNode(document.getElementById('promptBox'));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    alert('Não foi possível copiar automaticamente. O texto foi selecionado — use Ctrl+C (ou Cmd+C).');
+  }
+});
+
+document.getElementById('btnBaixar').addEventListener('click', () => {
+  const texto = document.getElementById('promptBox').textContent;
+  const blob = new Blob([texto], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'briefing-high-ticket.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+// ========== COPIAR / BAIXAR (MARKDOWN) ==========
+document.getElementById('btnCopiarMd').addEventListener('click', async () => {
+  const md = gerarBriefingMarkdown();
+  const btn = document.getElementById('btnCopiarMd');
+  try {
+    await navigator.clipboard.writeText(md);
+    btn.classList.add('copied');
+    btn.innerHTML = '<span class="ico">✓</span> Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<span class="ico">⧉</span> Copiar MD';
+    }, 2400);
+  } catch (e) {
+    alert('Não foi possível copiar automaticamente. Tente baixar o .md.');
+  }
+});
+
+document.getElementById('btnBaixarMd').addEventListener('click', () => {
+  const md = gerarBriefingMarkdown();
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'briefing-high-ticket.md';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+// ========== INIT ==========
+gerarPreviewCampanha();
+gerarPreviewFormNome();
+updateCharCount();
+updatePerguntaStatus();
+atualizarBotao();
+</script>
+
+</body>
+</html>
