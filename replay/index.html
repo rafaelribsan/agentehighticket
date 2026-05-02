@@ -82,6 +82,9 @@ body::after{
 
 main, header, footer{position:relative;z-index:1}
 
+em{font-style:normal;color:var(--accent);font-weight:800}
+strong{font-weight:700;color:var(--text)}
+
 /* ================================
    HEADER
    ================================ */
@@ -140,7 +143,7 @@ main, header, footer{position:relative;z-index:1}
    HERO / VSL AREA
    ================================ */
 .hero{
-  padding:64px 20px 80px;
+  padding:48px 20px 80px;
   position:relative;
   overflow:hidden;
   min-height: calc(100vh - 70px);
@@ -152,6 +155,76 @@ main, header, footer{position:relative;z-index:1}
   max-width:840px;
   margin:0 auto;
   width: 100%;
+}
+
+.hero-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 14px 7px 12px;
+  background:rgba(153,255,0,.08);
+  border:1px solid rgba(153,255,0,.3);
+  border-radius:100px;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  font-weight:700;
+  color:var(--accent);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.badge-icon{
+  width:14px;
+  height:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.badge-icon svg{
+  width:12px;
+  height:12px;
+  stroke:var(--accent);
+  fill:none;
+  stroke-width:2;
+}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--accent);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:700;
+  margin-bottom:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:'';
+  width:24px;
+  height:1px;
+  background:var(--accent);
+}
+
+.headline{
+  font-family:var(--font-display);
+  font-weight:800;
+  /* Fonte ajustada para garantir no máximo 4 linhas no mobile */
+  font-size:clamp(22px, 5.5vw, 42px);
+  line-height:1.15;
+  letter-spacing:-.03em;
+  color:var(--text);
+  font-variation-settings:"opsz" 96;
+  max-width: 800px;
 }
 
 .video-wrapper {
@@ -180,7 +253,7 @@ main, header, footer{position:relative;z-index:1}
    CTA E DELAY
    ================================ */
 #pitch-cta {
-  display: none; /* Mantém oculto até o JS ativar */
+  display: none; 
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
   flex-direction: column;
@@ -271,8 +344,9 @@ main, header, footer{position:relative;z-index:1}
 }
 
 @media (min-width: 720px){
-  .hero{padding:88px 32px}
+  .hero{padding:64px 32px}
   .subheadline{font-size:23px}
+  .headline{font-size:clamp(36px, 4.5vw, 48px)}
 }
 </style>
 </head>
@@ -291,9 +365,26 @@ main, header, footer{position:relative;z-index:1}
 <main class="hero">
   <div class="hero-inner">
 
+    <div class="hero-header">
+      <div class="badge">
+        <span class="badge-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </span>
+        Exclusivo para Agências de Viagens
+      </div>
+
+      <div class="eyebrow">Aula Ao Vivo · Webinário</div>
+
+      <h1 class="headline">
+        Como construir um sistema de vendas <em>1:1</em> que faz você receber, <em>toda semana</em>, pessoas que têm <em>problema, urgência e dinheiro</em> pra pagar pela sua consultoria de viagens.
+      </h1>
+    </div>
+
     <div class="video-wrapper">
       <div style="padding:56.25% 0 0 0;position:relative;">
-        <!-- ID adicionado ao iframe para controle via API -->
         <iframe id="vsl-video" src="https://player.vimeo.com/video/1188538756?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Replay AHT_File"></iframe>
       </div>
     </div>
@@ -302,7 +393,6 @@ main, header, footer{position:relative;z-index:1}
       Chega de cliente <strong>alma sebosa</strong>. Atraia clientes High Ticket.
     </p>
 
-    <!-- O botão fica encapsulado aqui para o controle de delay -->
     <div id="pitch-cta">
       <a href="https://pay.kiwify.com.br/9Dh2vX5" class="cta-button" target="_blank" rel="noopener">
         Quero Entrar Agora
@@ -318,7 +408,6 @@ main, header, footer{position:relative;z-index:1}
   <div class="footer-meta">© Rafael Santos · Todos os direitos reservados</div>
 </footer>
 
-<!-- Script Oficial do Vimeo -->
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 <script>
@@ -335,7 +424,6 @@ main, header, footer{position:relative;z-index:1}
         if (!cta.classList.contains('visible')) {
           cta.style.display = 'flex';
           
-          // Um pequeno delay para o navegador registrar o display:flex antes de mudar a opacidade
           setTimeout(() => {
             cta.classList.add('visible');
           }, 50);
