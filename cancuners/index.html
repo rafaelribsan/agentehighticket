@@ -1,1 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONSULTORIA EXPRESS™ | Cancuners VIP</title>
+<meta name="description" content="A orientação definitiva para garantir uma experiência perfeita e 100% personalizada em Cancún & região. 15 anos de vivência local, planejamento sob medida, roteiros completamente imunes a 'pegadinhas de turista'.">
 
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CONSULTORIA EXPRESS™ | Cancuners VIP">
+<meta property="og:description" content="A orientação definitiva para garantir uma experiência perfeita e 100% personalizada em Cancún & região. 15 anos de vivência local materializando sonhos no paraíso.">
+<meta property="og:image" content="./img/cabecalho-cancun.jpeg">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CONSULTORIA EXPRESS™ | Cancuners VIP">
+<meta name="twitter:description" content="A orientação definitiva para garantir uma experiência perfeita em Cancún & região.">
+<meta name="twitter:image" content="./img/cabecalho-cancun.jpeg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="./img/logo-cancuners.webp">
+<link rel="apple-touch-icon" href="./img/logo-cancuners.webp">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0a0d;
+    --bg-soft: #101015;
+    --bg-card: #14141b;
+    --bg-elevated: #1a1a22;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text: #f4f4f6;
+    --text-muted: #a8a8b4;
+    --text-dim: #6e6e7a;
+    --accent: #D4AF37;
+    --accent-light: #F0CC5E;
+    --accent-deep: #A8862A;
+    --accent-dim: rgba(212, 175, 55, 0.15);
+    --accent-glow: rgba(212, 175, 55, 0.35);
+    --accent-shadow: 0 0 1px rgba(255, 255, 255, 0.45), 0 0 14px rgba(212, 175, 55, 0.35);
+    --check-green: #22c55e;
+    --check-green-glow: rgba(34, 197, 94, 0.45);
+    --cross-red: #ef4444;
+    --cross-red-glow: rgba(239, 68, 68, 0.45);
+    --font-display: 'PT Serif', 'Lyon Text', Georgia, serif;
+    --font-body: 'Manrope', -apple-system, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.65;
+    font-size: 17px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Ambient background glow */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--accent-dim) 0%, transparent 60%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+  }
+
+  main {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---- Typography ---- */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--text);
+  }
+
+  h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); font-weight: 700; }
+  h2 { font-size: clamp(1.85rem, 4vw, 3.25rem); font-weight: 700; }
+  h3 { font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 700; }
+
+  p {
+    margin-bottom: 1.25em;
+  }
+
+  strong, b {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  em {
+    font-style: italic;
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  /* Highlight utility */
+  .hl {
+    color: var(--accent-light);
+    font-weight: 700;
+    text-shadow: var(--accent-shadow);
+  }
+
+  .hl-bg {
+    background: linear-gradient(180deg, transparent 60%, var(--accent-dim) 60%);
+    padding: 0 4px;
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .underline {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  /* ---- Layout ---- */
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .wrap-wide {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section {
+    padding: 80px 0;
+    position: relative;
+  }
+
+  section.tight { padding: 40px 0; }
+  section.loose { padding: 120px 0; }
+
+  /* ---- Cabeçalho de capa (imagem do skyline + logo) ---- */
+  .cover {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 38vw, 520px);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(10, 10, 13, 0) 0%,
+      rgba(10, 10, 13, 0.15) 50%,
+      rgba(10, 10, 13, 0.95) 95%,
+      var(--bg) 100%);
+    pointer-events: none;
+  }
+
+  /* Logo "foto de perfil" */
+  .profile-logo {
+    position: absolute;
+    bottom: -52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 4px solid var(--bg);
+    box-shadow:
+      0 0 0 1px rgba(212, 175, 55, 0.25),
+      0 8px 24px rgba(0, 0, 0, 0.6),
+      0 0 30px rgba(212, 175, 55, 0.18);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .profile-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    padding: 100px 0 60px;
+    position: relative;
+    text-align: center;
+  }
+
+  .hero h1 {
+    margin-bottom: 24px;
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  }
+
+  .hero h1 .sub {
+    display: block;
+    font-size: 0.6em;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .reading-time {
+    display: inline-block;
+    color: var(--text);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    margin-top: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-left: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+  }
+
+  /* ---- Lead text ---- */
+  .lead-block {
+    padding: 60px 0 30px;
+    text-align: left;
+  }
+
+  .lead-block p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 28px;
+  }
+
+  .lead-block p.boxed {
+    padding: 36px 36px;
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Section headings ---- */
+  .section-title {
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .section-title.center { text-align: center; }
+
+  /* ---- Para Quem (lista) ---- */
+  .para-quem {
+    list-style: none;
+    margin: 32px 0;
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .para-quem li {
+    padding: 12px 0 12px 38px;
+    position: relative;
+    font-size: 1.04rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .para-quem li:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .para-quem li.check::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 22px;
+    height: 22px;
+    background: var(--check-green);
+    border-radius: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 14px var(--check-green-glow);
+  }
+
+  .para-quem li.cross::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 22px;
+    height: 22px;
+    color: var(--cross-red);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 22px;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 14px var(--cross-red-glow);
+  }
+
+  /* ---- Etapas (numeradas) ---- */
+  .etapa {
+    padding: 70px 0;
+    position: relative;
+  }
+
+  .etapa-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow:
+      0 0 0 1px rgba(212, 175, 55, 0.4),
+      0 0 30px rgba(212, 175, 55, 0.35),
+      0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .etapa-tag {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--accent-light);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-shadow: var(--accent-shadow);
+  }
+
+  .etapa h2 {
+    margin-bottom: 24px;
+  }
+
+  /* ---- Checklist em fundo card (Etapa 2) ---- */
+  .checks {
+    list-style: none;
+    margin: 28px 0;
+    padding: 28px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .checks li {
+    padding: 10px 0 10px 40px;
+    position: relative;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .checks li:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .checks li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 22px;
+    height: 22px;
+    background: var(--check-green);
+    border-radius: 6px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 14px var(--check-green-glow);
+  }
+
+  /* ---- Nevers list ---- */
+  .nevers {
+    list-style: none;
+    margin: 28px 0;
+  }
+
+  .nevers li {
+    padding: 12px 0 12px 36px;
+    position: relative;
+    font-size: 1.04rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nevers li:last-child { border-bottom: none; }
+
+  .nevers li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--cross-red);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 14px var(--cross-red-glow);
+  }
+
+  /* ---- Numbered list (cashback) ---- */
+  .num-list {
+    counter-reset: items;
+    list-style: none;
+    margin: 28px 0;
+    padding: 24px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+
+  .num-list li {
+    counter-increment: items;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .num-list li:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .num-list li::before {
+    content: counter(items);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 26px;
+    height: 26px;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    font-family: var(--font-display);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  }
+
+  /* ---- Image frames ---- */
+  .img-frame {
+    margin: 50px 0;
+    position: relative;
+  }
+
+  .img-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .img-frame.phone-mockup {
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-frame.phone-mockup img {
+    border: none;
+    background: transparent;
+    border-radius: 16px;
+  }
+
+  .img-frame.tripadvisor {
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-frame.tripadvisor img {
+    border-radius: 12px;
+  }
+
+  .img-frame.floating {
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-frame.wide {
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-frame.portrait {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-frame.full-cancun img {
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.18);
+  }
+
+  /* ---- Testimonial wrapper ---- */
+  .testimonial {
+    margin: 50px 0;
+    padding: 40px 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    position: relative;
+  }
+
+  .testimonial::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .testimonial-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--accent-light);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-shadow: var(--accent-shadow);
+  }
+
+  .testimonial h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Statement box (importante) ---- */
+  .statement-box {
+    padding: 40px 36px;
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    margin: 40px 0;
+  }
+
+  .statement-box .lead {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---- Cashback warning ---- */
+  .cashback-warn {
+    padding: 32px 32px;
+    background: linear-gradient(135deg,
+      rgba(212, 175, 55, 0.1) 0%,
+      rgba(212, 175, 55, 0.04) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    margin: 36px 0 28px;
+    position: relative;
+  }
+
+  .cashback-warn::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .cashback-warn p {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.9vw, 1.4rem);
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .cashback-warn .icon {
+    font-size: 1.3em;
+    margin-right: 6px;
+  }
+
+  /* ---- Quem é (Lillian) ---- */
+  .lillian-intro {
+    text-align: center;
+    padding: 60px 0 30px;
+  }
+
+  .lillian-intro .question {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    text-shadow: var(--accent-shadow);
+  }
+
+  .lillian-intro .question .qmark {
+    color: var(--accent);
+    margin-right: 8px;
+    font-style: normal;
+    text-shadow: var(--accent-shadow);
+  }
+
+  /* ---- WhatsApp CTA ---- */
+  .cta-wrapper {
+    text-align: center;
+    padding: 40px 0 20px;
+  }
+
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 42px;
+    background: #25D366;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(37, 211, 102, 0.4),
+      0 0 30px rgba(37, 211, 102, 0.4),
+      0 20px 40px -10px rgba(37, 211, 102, 0.5);
+    overflow: hidden;
+  }
+
+  .whatsapp-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #4ade80, #25D366);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 0 1px rgba(37, 211, 102, 0.6),
+      0 0 60px rgba(37, 211, 102, 0.5),
+      0 30px 60px -15px rgba(37, 211, 102, 0.55);
+  }
+
+  .whatsapp-btn:hover::before {
+    opacity: 1;
+  }
+
+  .whatsapp-btn svg,
+  .whatsapp-btn span {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 540px) {
+    .whatsapp-btn {
+      padding: 18px 28px;
+      font-size: 1rem;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* ---- Vagas / Closing ---- */
+  .vagas-box {
+    max-width: 620px;
+    margin: 26px auto;
+    padding: 24px 32px;
+    background: rgba(212, 175, 55, 0.06);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .vagas-box .x {
+    font-size: 1.15rem;
+    color: var(--cross-red);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.4), 0 0 14px var(--cross-red-glow);
+  }
+
+  .vagas-box .x::before {
+    content: '✕';
+    margin-right: 8px;
+  }
+
+  .vagas-box .sub {
+    font-style: italic;
+    font-family: var(--font-display);
+    color: var(--text);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .closing {
+    max-width: 720px;
+    margin: 50px auto 0;
+    padding: 36px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .closing p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.55;
+    color: var(--text);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .closing .bulb {
+    color: var(--accent);
+    font-size: 1.4em;
+    display: inline-block;
+    margin-right: 6px;
+    text-shadow: var(--accent-shadow);
+  }
+
+  /* ---- Final CTA section ---- */
+  .final-cta {
+    padding: 90px 0 80px;
+    background: linear-gradient(180deg, transparent 0%, var(--bg-soft) 100%);
+    position: relative;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  /* ---- Divider ---- */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+    max-width: 200px;
+    gap: 16px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-strong);
+  }
+
+  .divider-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 14px var(--accent);
+  }
+
+  /* ---- Reveal animations ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---- Mobile tweaks ---- */
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    section { padding: 60px 0; }
+    .hero { padding: 80px 0 40px; }
+    .lead-block p.boxed { padding: 28px 24px; }
+    .etapa { padding: 50px 0; }
+    .testimonial { padding: 28px 22px; margin: 40px 0; }
+    .checks, .para-quem, .num-list { padding: 22px 24px; }
+    .statement-box { padding: 28px 24px; }
+    .cashback-warn { padding: 24px 22px; }
+    .closing { padding: 28px 18px; }
+    .profile-logo {
+      width: 92px;
+      height: 92px;
+      bottom: -42px;
+      border-width: 3px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- ================ COVER (skyline + logo perfil) ================ -->
+  <section class="cover">
+    <img src="./img/cabecalho-cancun.jpeg" alt="Vista panorâmica de Cancún" loading="eager">
+    <div class="profile-logo">
+      <img src="./img/logo-cancuners.webp" alt="Cancuners — Assessoria Turística">
+    </div>
+  </section>
+
+  <!-- ================ HERO ================ -->
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="reveal">
+        CONSULTORIA <span class="hl">EXPRESS™</span>
+        <span class="sub">| Cancuners VIP</span>
+      </h1>
+      <div class="reading-time reveal">(Tempo de leitura - 4 minutos)</div>
+    </div>
+  </section>
+
+  <!-- ================ LEAD ================ -->
+  <section class="tight">
+    <div class="wrap">
+      <div class="lead-block">
+        <p class="reveal">
+          A <span class="hl">orientação definitiva</span> para garantir uma experiência perfeita e <span class="hl">100% personalizada</span> em Cancún & região.
+        </p>
+
+        <p class="reveal">
+          Quando unimos <strong>15 anos de vivência local</strong> com planejamento sob medida, criamos roteiros completamente <span class="hl">imunes</span> a "pegadinhas de turista", tão comuns por aqui.
+        </p>
+
+        <p class="boxed reveal">
+          É exatamente essa orientação que garantiu <span class="hl">férias perfeitas</span> para centenas de famílias, <span class="underline">evitando hotéis em reforma, propinas policiais e passeios desalinhados do seu perfil de viajante.</span>
+        </p>
+      </div>
+
+      <!-- Depoimento Karen como prova social inicial -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">Depoimento · Karen Leme</span>
+        <div class="img-frame phone-mockup" style="margin: 0 auto;">
+          <img src="./img/depoimento-karen.webp" alt="Avaliação 5 estrelas no Google de Karen Leme — Conhecer Cancún foi um sonho realizado do qual a equipe Cancuners fez parte e toda a diferença." loading="lazy">
+        </div>
+      </div>
+
+      <p class="reveal" style="font-size: 1.08rem; margin-top: 36px;">
+        Na <strong>Consultoria Express™</strong>, nós entregamos a <span class="hl">validação estratégica</span> da sua viagem para que você não gaste dinheiro onde não vale a pena.
+      </p>
+    </div>
+  </section>
+
+  <div class="divider reveal">
+    <span class="divider-dot"></span>
+  </div>
+
+  <!-- ================ PARA QUEM ================ -->
+  <section class="tight">
+    <div class="wrap">
+      <h2 class="section-title reveal">PARA QUEM é a <span class="hl">Consultoria Express:</span></h2>
+
+      <ul class="para-quem reveal">
+        <li class="check"><strong>Viajantes Exigentes:</strong> Que valorizam o próprio tempo e buscam excelência</li>
+        <li class="check"><strong>Famílias e Casais:</strong> Que buscam segurança logística e não querem correr riscos</li>
+        <li class="cross">A Consultoria <strong class="underline">NÃO</strong> serve para quem busca "dicas de mochileiro", "jeitinho brasileiro" ou roteiros genéricos de internet</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider reveal">
+    <span class="divider-dot"></span>
+  </div>
+
+  <!-- ================ COMO FUNCIONA ================ -->
+  <section class="tight">
+    <div class="wrap">
+      <h2 class="section-title reveal">
+        O que fazemos e <span class="underline hl">COMO FUNCIONA</span> a Consultoria Express <em>(resumo objetivo)</em>.
+      </h2>
+
+      <p class="reveal" style="font-size: 1.08rem;">
+        Nós entregamos a <strong>Validação Estratégica</strong> da sua viagem. Analisamos seu perfil e orçamento para te dar o "Sinal Verde" (ou te livrar de uma furada) <span class="underline">com a propriedade técnica de quem vive o dia a dia de Cancún há mais de <span class="hl">15 anos</span>.</span>
+      </p>
+
+      <div class="img-frame full-cancun reveal">
+        <img src="./img/cabecalho-cancun.jpeg" alt="Vista aérea do litoral de Cancún" loading="lazy">
+      </div>
+
+      <p class="reveal" style="text-align: center; font-size: 1.575rem; margin-top: 30px;">
+        A <strong>Consultoria Express™</strong> é dividida em <span class="hl">3 etapas complementares</span>:
+      </p>
+    </div>
+  </section>
+
+  <!-- ================ ETAPA 1 ================ -->
+  <section class="etapa">
+    <div class="wrap">
+      <span class="etapa-num reveal">1</span>
+      <span class="etapa-tag reveal">Etapa 1</span>
+      <h2 class="reveal">O <span class="hl">Diagnóstico</span> do Perfil de Viajante</h2>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        Tudo começa com um <strong>formulário de diagnóstico</strong>. Sem isso, esquece.
+      </p>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        A chance de cair nas pegadinhas é <span class="hl">enorme</span>.
+      </p>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        Nós precisamos entender todas as suas expectativas para não desperdiçar o tempo da sua viagem com opções que não fazem sentido para você.
+      </p>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        <strong>É assim que nós fazemos:</strong>
+      </p>
+
+      <!-- Depoimento Juliana -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">Depoimento · Juliana Jannuzzi</span>
+        <div class="img-frame phone-mockup" style="margin: 0 auto;">
+          <img src="./img/depoimento-juliana.webp" alt="Avaliação 5 estrelas no Google de Juliana Jannuzzi — Ficamos super satisfeitos com toda assessoria da Cancuners. Foi tudo perfeito!" loading="lazy">
+        </div>
+      </div>
+
+      <p class="reveal" style="font-size: 1.06rem; margin-top: 30px;">
+        E todo este estudo é feito <span class="hl">ANTES</span> da nossa reunião na Consultoria Express.
+      </p>
+
+      <div class="statement-box reveal">
+        <p class="lead">
+          <span class="underline">Nós nos preparamos totalmente para o seu atendimento.</span> O nosso objetivo é investir o tempo da reunião da <span class="hl">melhor maneira possível</span> para o seu caso.
+        </p>
+      </div>
+
+      <p class="reveal" style="font-size: 1rem; color: var(--text-muted); margin-top: 28px;">
+        Com o Diagnóstico inicial concluído, <strong>agendamos nossa reunião via Google Meet</strong> - esta é a nossa segunda etapa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================ ETAPA 2 ================ -->
+  <section class="etapa">
+    <div class="wrap">
+      <span class="etapa-num reveal">2</span>
+      <span class="etapa-tag reveal">Etapa 2</span>
+      <h2 class="reveal">A <span class="hl">Reunião Individual</span></h2>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        Você vai sair dessa reunião com as <strong>dúvidas esclarecidas</strong> e as <strong>decisões validadas</strong>.
+      </p>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        Em <span class="hl">60 minutos</span>, nós vamos:
+      </p>
+
+      <ul class="checks reveal">
+        <li>Validar a logística do seu roteiro (para você não ficar rodando em círculos);</li>
+        <li>Aprovar (ou vetar) a escolha do hotel com base na sua expectativa de viagem;</li>
+        <li>Definir o que vale e o que <em>não</em> vale à pena pagar</li>
+        <li>Fazer um bate-bola de tira-dúvidas para outras orientações específicas</li>
+      </ul>
+
+      <p class="reveal" style="font-size: 1.1rem; font-weight: 700; color: var(--accent-light); text-shadow: var(--accent-shadow); margin-top: 30px;">
+        Clareza absoluta.
+      </p>
+
+      <div class="statement-box reveal" style="margin-top: 24px;">
+        <p class="lead">
+          O nosso objetivo é te entregar <span class="hl">paz de espírito</span> para você cuidar apenas de registrar as melhores memórias do nosso Caribe
+        </p>
+      </div>
+
+      <!-- Depoimento Joana J -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">Depoimento · Joana J</span>
+        <h3>"Experiencia única... faria tudo de novo ❤️"</h3>
+        <div class="img-frame phone-mockup" style="margin: 0 auto;">
+          <img src="./img/depoimento-joana.webp" alt="Avaliação de Joana J — Só tenho elogios para a família Cancuners. Foi espetacular, eles conseguiram superar qualquer expectativa." loading="lazy">
+        </div>
+      </div>
+
+      <p class="reveal" style="font-size: 1.06rem; margin-top: 30px;">
+        E nada de ficar anotando tudo desesperadamente.
+      </p>
+
+      <p class="reveal" style="font-size: 1rem; color: var(--text-muted);">
+        Finalizada a nossa Reunião, iremos lhe entregar a <strong>gravação</strong> e entraremos na terceira etapa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================ ETAPA 3 ================ -->
+  <section class="etapa">
+    <div class="wrap">
+      <span class="etapa-num reveal">3</span>
+      <span class="etapa-tag reveal">Etapa 3</span>
+      <h2 class="reveal">O <span class="hl">"Seguro Dúvida"</span> <em>(suporte)</em></h2>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        Além de receber a gravação na íntegra da <strong>Consultoria Express™</strong>, você terá direito a mais <span class="hl">1h de validação pelo WhatsApp</span> para revisar o que combinamos na Reunião.
+      </p>
+
+      <p class="reveal" style="font-size: 1.06rem;">
+        <strong>Este momento será agendado</strong> diretamente com a nossa Especialista e tem por objetivo sanar as dúvidas que eventualmente surgirem sobre o que foi tratado na Consultoria.
+      </p>
+
+      <p class="reveal" style="font-size: 1.1rem; font-weight: 600; margin-top: 32px;">
+        É este o <span class="hl">nível de cuidado</span> que entregamos:
+      </p>
+
+      <!-- Depoimento Daiane (TripAdvisor 5.0) -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">TripAdvisor · 5.0 estrelas</span>
+        <div class="img-frame tripadvisor" style="margin: 0 auto;">
+          <img src="./img/depoimento-daiane.webp" alt="Avaliação 5.0 no TripAdvisor de Daiane F — Superaram as Expectativas. Avaliação totalizada 5.0 com base em 892 avaliações." loading="lazy">
+        </div>
+      </div>
+
+      <!-- Cashback box -->
+      <div class="cashback-warn reveal">
+        <p>
+          <span class="icon">⚠️</span>
+          <em>Optando por fazer o upgrade para a <span class="hl">Assessoria completa</span>, todo o valor investido na Consultoria vira <span class="underline">cashback</span>.</em>
+        </p>
+      </div>
+
+      <p class="reveal" style="font-size: 1.04rem; margin-top: 24px;">
+        Ou seja:
+      </p>
+
+      <ol class="num-list reveal">
+        <li>Você faz a Consultoria e resolve suas dúvidas.</li>
+        <li>Se decidir contratar a Assessoria depois, a Consultoria saiu <strong class="hl">de graça</strong>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="divider reveal">
+    <span class="divider-dot"></span>
+  </div>
+
+  <!-- ================ QUEM É VOCÊ (Lillian) ================ -->
+  <section class="loose" style="background: var(--bg-soft);">
+    <div class="wrap">
+      <div class="lillian-intro reveal">
+        <h2 style="margin-bottom: 18px;">A esta altura você deve estar se perguntando…</h2>
+        <p class="question"><span class="qmark">❓</span><em>"Tá, mas quem é você?"</em></p>
+      </div>
+
+      <p class="reveal" style="font-size: 1.08rem; text-align: center;">
+        O meu nome é <span class="underline"><strong>Lilian Merigue Ignácio</strong></span>, e eu sou a <strong>CEO da Cancuners</strong>.
+      </p>
+
+      <div class="img-frame portrait reveal">
+        <img src="./img/lillian-ceo.webp" alt="Lilian Merigue Ignácio — CEO da Cancuners" loading="lazy">
+      </div>
+
+      <p class="reveal" style="font-size: 1.06rem; text-align: center; font-style: italic; color: var(--text-muted);">
+        Minha formação não é apenas teórica, é <span class="hl">vivencial</span>.
+      </p>
+
+      <h2 class="reveal" style="text-align: center; margin: 40px 0 20px;">
+        Sou especialista no <span class="hl">Caribe Mexicano</span> e tenho orgulho de dizer que <span class="underline">somos a empresa mais bem avaliada do Trip Advisor.</span>
+      </h2>
+
+      <ul class="nevers reveal" style="margin-top: 36px;">
+        <li>Não vendemos "pacotão pré-pronto".</li>
+        <li>Não vendemos "o que paga mais comissão"</li>
+      </ul>
+
+      <div class="statement-box reveal" style="margin-top: 40px;">
+        <p class="lead">
+          O nosso foco sempre foi e sempre será <span class="hl">VOCÊ</span>, o nosso cliente.
+        </p>
+      </div>
+
+      <p class="reveal" style="font-size: 1.05rem; margin-top: 32px;">
+        Porque a verdade é que <span class="underline">cada um tem o seu desafio, a sua necessidade, a sua expectativa</span> e aquilo que realmente faz sentido de viver aqui no Caribe Mexicano.
+      </p>
+
+      <h3 class="reveal" style="margin-top: 50px;">
+        Por exemplo, o <span class="hl">Geraldo</span> se arrependeu de não ter contrato antes:
+      </h3>
+
+      <!-- Depoimento Geraldo -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">Depoimento · Geraldo Araujo</span>
+        <div class="img-frame phone-mockup" style="margin: 0 auto;">
+          <img src="./img/depoimento-geraldo.webp" alt="Avaliação 5 estrelas no Google de Geraldo Araujo — A assessoria da Cancuners foi realmente um grande investimento." loading="lazy">
+        </div>
+      </div>
+
+      <h3 class="reveal" style="margin-top: 50px;">
+        A <span class="hl">Rafaella</span> tinha o desafio de <span class="underline">fazer a viagem "funcionar" também pro filho dela de 12 anos:</span>
+      </h3>
+
+      <!-- Depoimento Rafaella -->
+      <div class="testimonial reveal">
+        <span class="testimonial-label">Depoimento · Psi. Rafaella Fontes</span>
+        <div class="img-frame phone-mockup" style="margin: 0 auto;">
+          <img src="./img/depoimento-rafaella.webp" alt="Avaliação 5 estrelas no Google de Rafaella Fontes — Nossa viagem para Cancun foi muito especial. Profissionalismo evidente em cada interação." loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ FINAL CTA ================ -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2 class="reveal" style="text-align: center; margin-bottom: 40px;">
+        Se a <strong>Consultoria Express™</strong> parece fazer sentido, <span class="underline hl">solicite os detalhes via WhatsApp.</span>
+      </h2>
+
+      <div class="img-frame floating reveal">
+        <img src="./img/casal-veleiro.webp" alt="Materializamos seu sonho de ter a viagem perfeita para Cancún" loading="lazy">
+      </div>
+
+      <p class="reveal" style="font-size: 1.08rem; text-align: center; max-width: 640px; margin: 40px auto 30px;">
+        Fale agora com a nossa <strong>Especialista no Whatsapp</strong> para verificar a nossa disponibilidade de agenda e para receber as informações de <span class="hl">preço</span> e <span class="hl">forma de pagamento</span>.
+      </p>
+
+      <div class="cta-wrapper reveal">
+        <a href="https://wa.link/27u50h" class="whatsapp-btn" target="_blank" rel="noopener">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>🔗 Falar no WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="vagas-box reveal">
+        <span class="x">VAGAS LIMITADAS!</span>
+        <p class="sub">Recebemos apenas 20 clientes por mês.</p>
+      </div>
+
+      <div class="closing reveal">
+        <p>
+          <span class="bulb">💡</span>
+          Na <strong>Consultoria Express™</strong> você terá acesso à <span class="hl"><em>inteligência de campo</em></span> que acumulamos depois de mais de 15 anos vivendo no Caribe Mexicano — a exata mesma inteligência que já garantiu a experiência perfeita para centenas de famílias satisfeitas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Scroll-triggered reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+        const idx = siblings.indexOf(entry.target);
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, idx * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -80px 0px'
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Initial reveal for above-the-fold hero items
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), 100 + (i * 150));
+    });
+  });
+</script>
+
+</body>
+</html>
